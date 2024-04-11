@@ -1,5 +1,5 @@
 {
-    "name": "PlayerInputActions",
+    "name": "AprilJamInputActions",
     "maps": [
         {
             "name": "Player",
@@ -63,6 +63,15 @@
                     "name": "Si",
                     "type": "Button",
                     "id": "269ee351-01d9-476a-98ab-208468b5b17b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Confirm",
+                    "type": "Button",
+                    "id": "239cd527-fa99-4a5b-80ae-c1c7a94571eb",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -144,6 +153,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Si",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "37066767-700a-4f2f-a52c-7eb361428453",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Confirm",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

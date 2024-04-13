@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
@@ -7,25 +8,19 @@ namespace aprilJam
 {
   public class SirenSong : MonoBehaviour
   {
-    #region CONSTANTS
-    const int MAX_NOTE_COUNT = 3;
-    #endregion
-
     #region PARAMETERS
     [Inject] private AprilJamInputActions inputActions;
+    [Inject] private NoteCombination      noteCombination;
 
-    private List<Note> noteCombination;
+    private List<Note> pressedNotes;
     #endregion
 
     #region LIFECYCLE
-    private void Awake()
-    {
-      noteCombination          = new List<Note>();
-      noteCombination.Capacity = MAX_NOTE_COUNT;
-    }
-
     private void Start()
     {
+      pressedNotes          = new List<Note>();
+      pressedNotes.Capacity = noteCombination.MaxLenth;
+
       inputActions.Player.Do.started  += PlayedNoteDo;
       inputActions.Player.Re.started  += PlayedNoteRe;
       inputActions.Player.Mi.started  += PlayedNoteMi;
@@ -89,18 +84,21 @@ namespace aprilJam
 
     private void ApplyCombination(CallbackContext _context)
     {
-      //todo: calculate combination effect and sent it to sailor
-      noteCombination.Clear();
+      if (noteCombination.Actions.TryGetValue(noteCombination.NotesToKey(pressedNotes),
+                                              out Action action))
+        action();
+
+      pressedNotes.Clear();
     }
     #endregion
 
     #region METHODS
     private bool AddNote(Note _note)
     {
-      if (noteCombination.Count == MAX_NOTE_COUNT)
+      if (pressedNotes.Count == noteCombination.MaxLenth)
         return false;
 
-      noteCombination.Add(_note);
+      pressedNotes.Add(_note);
       return true;
     }
     #endregion

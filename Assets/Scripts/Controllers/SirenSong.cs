@@ -15,6 +15,10 @@ namespace aprilJam
     private List<Note> pressedNotes;
     #endregion
 
+    #region EVENTS
+    public event Action<List<Note>> OnSinging;
+    #endregion
+
     #region LIFECYCLE
     private void Start()
     {
@@ -86,7 +90,10 @@ namespace aprilJam
     {
       if (noteCombination.Actions.TryGetValue(noteCombination.NotesToKey(pressedNotes),
                                               out Action action))
+      {
         action();
+        OnSinging.Invoke(pressedNotes);
+      }
 
       pressedNotes.Clear();
     }

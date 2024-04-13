@@ -38,7 +38,7 @@ namespace aprilJam
     #region CRUTCH
     public void Fun1()
     {
-      Debug.Log("action 1");
+      // crutch for sailor methods
     }
     #endregion
   }

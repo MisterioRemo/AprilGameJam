@@ -1,6 +1,11 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
+using UnityEngine.InputSystem.Utilities;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine.Video;
 
 namespace aprilJam
@@ -15,74 +20,154 @@ namespace aprilJam
       SecondIntro
     }
 
+    [Serializable]
+    private struct NotePrefab
+    {
+      public Note       note;
+      public GameObject prefab;
+    }
+
     #region PARAMETERS
+    [Header("Video")]
     [SerializeField] private VideoPlayer     videoPlayer;
     [SerializeField] private List<VideoClip> videos;
-    [SerializeField] private string          gameSceneName;
 
-    private IEnumerator<VideoClip> videoEnumerator;
-    private PrologueStage          stage;
+    [Header("Canvas")]
+    [SerializeField] private Canvas           canvas;
+    [SerializeField] private List<NotePrefab> notePrefabs;
+    [SerializeField] private GameObject       tooltip;
+
+    [Space(16)]
+
+    [Tooltip("Note combination for sailor possessing.")]
+    [SerializeField] private Note[] noteCombination;
+
+    [Tooltip("Scene that will be loaded after cutscene.")]
+    [SerializeField] private string gameSceneName;
+
+    private IEnumerator<VideoClip>       videoEnumerator;
+    private PrologueStage                stage;
+    private IDisposable                  inputListener;
+    private int                          noteIndex;
+    private Dictionary<Note, GameObject> noteToPrefab;
     #endregion
 
     #region LIFECYCLE
     private void Awake()
     {
+      noteToPrefab                  = new Dictionary<Note, GameObject>();
       stage                         = PrologueStage.NotStarted;
       videoEnumerator               = videos.GetEnumerator();
       videoPlayer.loopPointReached += OnVideoEnded;
+
+      foreach (var elem in notePrefabs)
+        noteToPrefab.Add(elem.note, elem.prefab);
+
+      PrepareVideo();
     }
 
     private void Start()
     {
-      StartVideo(PrologueStage.FirstIntro);
+      stage = PrologueStage.FirstIntro;
+      StartVideo();
     }
 
     private void OnDestroy()
     {
       videoPlayer.loopPointReached -= OnVideoEnded;
+      inputListener?.Dispose();
     }
     #endregion
 
-    #region METHODS
+    #region CALLBACKS
     private void OnVideoEnded(VideoPlayer _player)
     {
       if (stage == PrologueStage.FirstIntro)
       {
-        stage = PrologueStage.UserInput;
-        StopVideo();
-        WaitForUserInput();
+        ClearVideo();
+        PrepareVideo();
+
+        stage         = PrologueStage.UserInput;
+        inputListener = InputSystem.onAnyButtonPress.Call(ProcessingUserInput);
+        ShowCanvas();
       }
       else if (stage == PrologueStage.SecondIntro)
       {
-        StopVideo();
+        ClearVideo();
         SceneManager.LoadScene(gameSceneName);
       }
     }
 
-    private bool StartVideo(PrologueStage _newStage)
+    private void ProcessingUserInput(InputControl _button)
+    {
+      if (_button is KeyControl key)
+      {
+        if (KeyToNote.Map.TryGetValue(key.keyCode, out Note note) &&
+            noteIndex < noteCombination.Length                    &&
+            note == noteCombination[noteIndex])
+        {
+          if (++noteIndex == noteCombination.Length)
+            ShowTooltip();
+        }
+        else if (noteIndex == noteCombination.Length &&
+                 (key.keyCode == Key.Space || key.keyCode == Key.Enter))
+        {
+          stage = PrologueStage.SecondIntro;
+          inputListener.Dispose();
+          HideCanvas();
+          StartVideo();
+        }
+        else if (noteIndex != noteCombination.Length)
+        {
+          noteIndex = 0;
+        }
+      }
+    }
+    #endregion
+
+    #region VIDEO CONTROL
+    private void PrepareVideo()
     {
       if (videoEnumerator.MoveNext())
       {
-        stage            = _newStage;
         videoPlayer.clip = videoEnumerator.Current;
-        videoPlayer.Play();
-
-        return true;
+        videoPlayer.Prepare();
+        videoPlayer.Stop();
       }
-
-      return false;
     }
 
-    private void StopVideo()
+    private void StartVideo()
+    {
+      videoPlayer.Play();
+    }
+
+    private void ClearVideo()
     {
       videoPlayer.Stop();
       videoPlayer.clip = null;
     }
+    #endregion
 
-    private void WaitForUserInput()
+    #region CANVAS
+    private void ShowCanvas()
     {
-      Debug.Log("wait");
-      StartVideo(PrologueStage.SecondIntro);
+      canvas.gameObject.SetActive(true);
+
+      var grid             = canvas.GetComponentInChildren<GridLayoutGroup>();
+      grid.constraintCount = noteCombination.Length;
+
+      foreach(var note in noteCombination)
+        Instantiate(noteToPrefab[note], grid.transform);
+    }
+
+    private void HideCanvas()
+    {
+      canvas.gameObject.SetActive(false);
+    }
+
+    private void ShowTooltip()
+    {
+      tooltip.SetActive(true);
     }
     #endregion
   }

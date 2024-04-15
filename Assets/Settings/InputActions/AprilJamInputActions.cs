@@ -104,7 +104,7 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""084effe7-d071-462d-b3aa-fb029103d8be"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -115,7 +115,7 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""3ee9b610-afdc-401d-bd59-0b03eeab3277"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -126,7 +126,7 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""5103f366-a2be-4f41-9412-5de34d5baf8a"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -137,7 +137,7 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""254b12ec-66db-4b5b-aecf-5622cb84f18c"",
-                    ""path"": ""<Keyboard>/r"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -148,7 +148,18 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""fcccd1e4-9caf-4f05-8bfc-afa694d86294"",
-                    ""path"": ""<Keyboard>/a"",
+                    ""path"": ""<Keyboard>/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sol"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f2753e49-119b-4dbb-8c4a-0978d9c18201"",
+                    ""path"": ""<Keyboard>/o"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -159,7 +170,18 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""4120621d-98ea-4c46-99c5-f3d2538946e8"",
-                    ""path"": ""<Keyboard>/s"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""La"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""db18bd2e-f47b-4c2d-aa24-3406a8f6d7ca"",
+                    ""path"": ""<Keyboard>/k"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -170,7 +192,18 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""a3e56b1e-29d2-47d4-af12-2029690a0d4f"",
-                    ""path"": ""<Keyboard>/d"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Si"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""abea4878-85a1-4397-bd1a-692e4f4926d8"",
+                    ""path"": ""<Keyboard>/semicolon"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -182,6 +215,17 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""37066767-700a-4f2f-a52c-7eb361428453"",
                     ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Confirm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a9c1422e-8635-43ec-b6ec-e727ced3b4d2"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

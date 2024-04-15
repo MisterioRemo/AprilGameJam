@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36df45d67b99dfb4abf8c229a256dd63, type: 3}
+  m_Name: RainbowNotePalette
+  m_EditorClassIdentifier: 
+  Value:
+  - note: 0
+    color: {r: 0.96862745, g: 0.21960784, b: 0.13725491, a: 1}
+  - note: 1
+    color: {r: 0.96862745, g: 0.5058824, b: 0.13725491, a: 1}
+  - note: 2
+    color: {r: 0.96862745, g: 0.6745098, b: 0.13725491, a: 1}
+  - note: 3
+    color: {r: 0.46666667, g: 0.7607843, b: 0.39215687, a: 1}
+  - note: 4
+    color: {r: 0.37254903, g: 0.7529412, b: 0.87058824, a: 1}
+  - note: 5
+    color: {r: 0.1882353, g: 0.4627451, b: 0.9411765, a: 1}
+  - note: 6
+    color: {r: 0.48235294, g: 0.33333334, b: 0.76862746, a: 1}

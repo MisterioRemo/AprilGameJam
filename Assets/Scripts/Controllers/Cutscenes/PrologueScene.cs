@@ -33,7 +33,7 @@ namespace aprilJam
     [SerializeField] private List<VideoClip> videos;
 
     [Header("Canvas")]
-    [SerializeField] private Canvas           canvas;
+    [SerializeField] private GameObject       btnContainer;
     [SerializeField] private List<NotePrefab> notePrefabs;
     [SerializeField] private GameObject       tooltip;
 
@@ -89,7 +89,7 @@ namespace aprilJam
 
         stage         = PrologueStage.UserInput;
         inputListener = InputSystem.onAnyButtonPress.Call(ProcessingUserInput);
-        ShowCanvas();
+        ShowButtons();
       }
       else if (stage == PrologueStage.SecondIntro)
       {
@@ -114,7 +114,7 @@ namespace aprilJam
         {
           stage = PrologueStage.SecondIntro;
           inputListener.Dispose();
-          HideCanvas();
+          HideButtons();
           StartVideo();
         }
         else if (noteIndex != noteCombination.Length)
@@ -149,25 +149,33 @@ namespace aprilJam
     #endregion
 
     #region CANVAS
-    private void ShowCanvas()
+    private void ShowButtons()
     {
-      canvas.gameObject.SetActive(true);
+      btnContainer.SetActive(true);
 
-      var grid             = canvas.GetComponentInChildren<GridLayoutGroup>();
+      var grid             = btnContainer.GetComponentInChildren<GridLayoutGroup>();
       grid.constraintCount = noteCombination.Length;
 
       foreach(var note in noteCombination)
         Instantiate(noteToPrefab[note], grid.transform);
     }
 
-    private void HideCanvas()
+    private void HideButtons()
     {
-      canvas.gameObject.SetActive(false);
+      btnContainer.SetActive(false);
     }
 
     private void ShowTooltip()
     {
       tooltip.SetActive(true);
+    }
+    #endregion
+
+    #region INTERFACE
+    public void ResetVideo(List<VideoClip> _videos)
+    {
+      videos          = _videos;
+      videoEnumerator = videos.GetEnumerator();
     }
     #endregion
   }

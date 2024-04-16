@@ -9,9 +9,8 @@ namespace aprilJam
     #endregion
 
     #region LIFECYCLE
-    protected override void Awake()
+    private void Awake()
     {
-      base.Awake();
       systems = GetComponentsInChildren<ParticleSystem>();
     }
     #endregion

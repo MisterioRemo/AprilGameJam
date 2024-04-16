@@ -5,21 +5,10 @@ namespace aprilJam
   [RequireComponent(typeof(Collider))]
   public class InteractableObject : MonoBehaviour
   {
-    #region PARAMETERS
-    protected Collider objCollider;
-    #endregion
-
-    #region LIFECYCLE
-    protected virtual void Awake()
-    {
-      objCollider = GetComponent<Collider>();
-    }
-    #endregion
-
     #region COLLISIONS
     protected virtual void OnTriggerEnter(Collider _collision)
     {
-      if (!IsSailor(_collision.gameObject))
+      if (!IsSailor(_collision.transform.root.gameObject))
         return;
 
       ProcessTrigerCollision(_collision);

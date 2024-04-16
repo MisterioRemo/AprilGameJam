@@ -5,6 +5,8 @@ namespace aprilJam
 {
   public class ActionsInstaller : MonoInstaller
   {
+    [SerializeField] private bool isMenu = false;
+
     public override void InstallBindings()
     {
       Container
@@ -12,7 +14,9 @@ namespace aprilJam
         .FromNew()
         .AsSingle()
         .OnInstantiated<AprilJamInputActions>
-          ((context, inputActions) => inputActions.Player.Enable())
+          ((context, inputActions) => { if (isMenu) inputActions.Menu.Enable();
+                                        else inputActions.Player.Enable();
+                                      })
         .NonLazy();
     }
   }

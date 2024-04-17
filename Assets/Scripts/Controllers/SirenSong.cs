@@ -86,6 +86,7 @@ namespace aprilJam
     private void PlayedNoteLa(CallbackContext _context)
     {
       AddNote(Note.La);
+
     }
 
     private void PlayedNoteSi(CallbackContext _context)

@@ -18,7 +18,8 @@ namespace aprilJam
     {
       Actions = new Dictionary<string, Action>()
       {
-        { NotesToKey(new List<Note> { Note.Do, Note.Re, Note.Mi, Note.Fa }), Fun1 }
+        { NotesToKey(new List<Note> { Note.Do, Note.Re, Note.Mi, Note.Fa }), Fun1 }//, 
+          //{NotesToKey(new List<Note>{Note.Do,Note.Do }),}
       };
     }
     #endregion

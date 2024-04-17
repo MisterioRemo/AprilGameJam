@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Zenject;
 
 namespace aprilJam
@@ -16,7 +17,8 @@ namespace aprilJam
         .OnInstantiated<AprilJamInputActions>
           ((context, inputActions) => { if (isMenu) inputActions.Menu.Enable();
                                         else inputActions.Player.Enable();
-                                      })
+                                        InputSystem.DisableDevice(Mouse.current);
+          })
         .NonLazy();
     }
   }

@@ -8,12 +8,12 @@ namespace aprilJam
     public class Movement : MonoBehaviour
     {
         private bool isMoving;
-        private float movingTime = 0.75f;
+        private float movingTime = 0.45f;
         private float carrentMove = 0;
         private Animator animator;
         private bool isRotating;
 
-        private float RotTime = 0.3f;
+        private float RotTime = 0.6f;
         private float LerpTime = 0;
 
         private float isNotControlTime = 5;

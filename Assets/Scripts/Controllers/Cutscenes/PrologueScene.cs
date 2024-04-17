@@ -50,11 +50,13 @@ namespace aprilJam
     private IDisposable                  inputListener;
     private int                          noteIndex;
     private Dictionary<Note, GameObject> noteToPrefab;
+    private List<GameObject>             notesInGrid;
     #endregion
 
     #region LIFECYCLE
     private void Awake()
     {
+      notesInGrid                   = new List<GameObject>();
       noteToPrefab                  = new Dictionary<Note, GameObject>();
       stage                         = PrologueStage.NotStarted;
       videoEnumerator               = videos.GetEnumerator();
@@ -106,6 +108,7 @@ namespace aprilJam
             noteIndex < noteCombination.Length                    &&
             note == noteCombination[noteIndex])
         {
+          LeanTween.scale(notesInGrid[noteIndex], new Vector3(1.2f, 1.2f, 1.2f), 0.3f).setEase(LeanTweenType.easeOutQuint);
           if (++noteIndex == noteCombination.Length)
             ShowTooltip();
         }
@@ -120,6 +123,8 @@ namespace aprilJam
         else if (noteIndex != noteCombination.Length)
         {
           noteIndex = 0;
+          foreach(var elem in notesInGrid)
+            LeanTween.scale(elem, new Vector3(1f, 1f, 1f), 0.3f).setEase(LeanTweenType.easeOutQuint);
         }
       }
     }
@@ -157,7 +162,7 @@ namespace aprilJam
       grid.constraintCount = noteCombination.Length;
 
       foreach(var note in noteCombination)
-        Instantiate(noteToPrefab[note], grid.transform);
+        notesInGrid.Add(Instantiate(noteToPrefab[note], grid.transform));
     }
 
     private void HideButtons()

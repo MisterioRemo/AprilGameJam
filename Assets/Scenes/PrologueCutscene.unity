@@ -1137,7 +1137,7 @@ MonoBehaviour:
     prefab: {fileID: 4457694537173250512, guid: 2b85c6923d714b144b5c0a300cb97e4c,
       type: 3}
   tooltip: {fileID: 474042539}
-  noteCombination: 000000
+  noteCombination: 00040106
   gameSceneName: Map_01
 --- !u!4 &2053324852
 Transform:

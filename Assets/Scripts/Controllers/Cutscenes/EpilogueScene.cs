@@ -12,16 +12,12 @@ namespace aprilJam
     [SerializeField] private VideoClip   lonelyVideo;
     #endregion
 
-    #region PROPERTIES
-    public EndingType Ending { get; set; }
-    #endregion
-
     #region LIFECYCLE
     private void Awake()
     {
       VideoClip video = null;
 
-      switch (Ending)
+      switch (GameState.Instance.Ending)
       {
         case EndingType.Happy:
           video = happyVideo;

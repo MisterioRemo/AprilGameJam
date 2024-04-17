@@ -245,6 +245,51 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 491941092}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &221139202
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 221139205}
+  - component: {fileID: 221139203}
+  m_Layer: 0
+  m_Name: GameContorller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &221139203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221139202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f788785ae3ec41144a2cd6f16ef110a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combinationWindow: {fileID: 1737799518}
+--- !u!4 &221139205
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221139202}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 274, y: 154, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &242248544 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8187272381842002797, guid: 24caf363b995725439f4104a0bba02fe,
@@ -1158,6 +1203,51 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19422be3e981da24d9879d0b54e739fc, type: 3}
+--- !u!1 &817020128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 817020129}
+  - component: {fileID: 817020130}
+  m_Layer: 0
+  m_Name: SailorInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &817020129
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817020128}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2040019640}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &817020130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817020128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92fef0c6c5cb8a646b13a0fb76b55aa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sailor: {fileID: 961230258}
 --- !u!1 &879928185
 GameObject:
   m_ObjectHideFlags: 0
@@ -3200,7 +3290,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press Spacebar to close this window. Press C to open it again.
+  m_text: Press Esc to close this window. Press C to open it again.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e26735e2aa016fd4e957f5962c914905, type: 2}
   m_sharedMaterial: {fileID: 3940269995468132112, guid: e26735e2aa016fd4e957f5962c914905,
@@ -3310,6 +3400,7 @@ Transform:
   m_Children:
   - {fileID: 2085487745}
   - {fileID: 1378234372}
+  - {fileID: 817020129}
   m_Father: {fileID: 282061085}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2040019641
@@ -3328,6 +3419,7 @@ MonoBehaviour:
   _monoInstallers:
   - {fileID: 2085487746}
   - {fileID: 1378234373}
+  - {fileID: 817020130}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -3406,3 +3498,4 @@ SceneRoots:
   - {fileID: 961230259}
   - {fileID: 387579001}
   - {fileID: 105740118}
+  - {fileID: 221139205}

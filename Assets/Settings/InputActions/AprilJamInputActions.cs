@@ -98,6 +98,15 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Combination"",
+                    ""type"": ""Button"",
+                    ""id"": ""ee89da45-f6eb-4c2b-a1ff-5821fc89a740"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -232,6 +241,17 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Confirm"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2d74a01e-f8c5-4e80-93de-bb5ce4293f67"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Combination"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -267,7 +287,7 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Menu"",
+                    ""name"": ""Exit"",
                     ""type"": ""Button"",
                     ""id"": ""2532d6f3-eaf7-47a4-a605-62ba3b847945"",
                     ""expectedControlType"": ""Button"",
@@ -427,7 +447,7 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Menu"",
+                    ""action"": ""Exit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -446,12 +466,13 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
         m_Player_La = m_Player.FindAction("La", throwIfNotFound: true);
         m_Player_Si = m_Player.FindAction("Si", throwIfNotFound: true);
         m_Player_Confirm = m_Player.FindAction("Confirm", throwIfNotFound: true);
+        m_Player_Combination = m_Player.FindAction("Combination", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Navigation = m_Menu.FindAction("Navigation", throwIfNotFound: true);
         m_Menu_Apply = m_Menu.FindAction("Apply", throwIfNotFound: true);
         m_Menu_Return = m_Menu.FindAction("Return", throwIfNotFound: true);
-        m_Menu_Menu = m_Menu.FindAction("Menu", throwIfNotFound: true);
+        m_Menu_Exit = m_Menu.FindAction("Exit", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -521,6 +542,7 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_La;
     private readonly InputAction m_Player_Si;
     private readonly InputAction m_Player_Confirm;
+    private readonly InputAction m_Player_Combination;
     public struct PlayerActions
     {
         private @AprilJamInputActions m_Wrapper;
@@ -533,6 +555,7 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
         public InputAction @La => m_Wrapper.m_Player_La;
         public InputAction @Si => m_Wrapper.m_Player_Si;
         public InputAction @Confirm => m_Wrapper.m_Player_Confirm;
+        public InputAction @Combination => m_Wrapper.m_Player_Combination;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -566,6 +589,9 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
             @Confirm.started += instance.OnConfirm;
             @Confirm.performed += instance.OnConfirm;
             @Confirm.canceled += instance.OnConfirm;
+            @Combination.started += instance.OnCombination;
+            @Combination.performed += instance.OnCombination;
+            @Combination.canceled += instance.OnCombination;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -594,6 +620,9 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
             @Confirm.started -= instance.OnConfirm;
             @Confirm.performed -= instance.OnConfirm;
             @Confirm.canceled -= instance.OnConfirm;
+            @Combination.started -= instance.OnCombination;
+            @Combination.performed -= instance.OnCombination;
+            @Combination.canceled -= instance.OnCombination;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -618,7 +647,7 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Menu_Navigation;
     private readonly InputAction m_Menu_Apply;
     private readonly InputAction m_Menu_Return;
-    private readonly InputAction m_Menu_Menu;
+    private readonly InputAction m_Menu_Exit;
     public struct MenuActions
     {
         private @AprilJamInputActions m_Wrapper;
@@ -626,7 +655,7 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
         public InputAction @Navigation => m_Wrapper.m_Menu_Navigation;
         public InputAction @Apply => m_Wrapper.m_Menu_Apply;
         public InputAction @Return => m_Wrapper.m_Menu_Return;
-        public InputAction @Menu => m_Wrapper.m_Menu_Menu;
+        public InputAction @Exit => m_Wrapper.m_Menu_Exit;
         public InputActionMap Get() { return m_Wrapper.m_Menu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -645,9 +674,9 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
             @Return.started += instance.OnReturn;
             @Return.performed += instance.OnReturn;
             @Return.canceled += instance.OnReturn;
-            @Menu.started += instance.OnMenu;
-            @Menu.performed += instance.OnMenu;
-            @Menu.canceled += instance.OnMenu;
+            @Exit.started += instance.OnExit;
+            @Exit.performed += instance.OnExit;
+            @Exit.canceled += instance.OnExit;
         }
 
         private void UnregisterCallbacks(IMenuActions instance)
@@ -661,9 +690,9 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
             @Return.started -= instance.OnReturn;
             @Return.performed -= instance.OnReturn;
             @Return.canceled -= instance.OnReturn;
-            @Menu.started -= instance.OnMenu;
-            @Menu.performed -= instance.OnMenu;
-            @Menu.canceled -= instance.OnMenu;
+            @Exit.started -= instance.OnExit;
+            @Exit.performed -= instance.OnExit;
+            @Exit.canceled -= instance.OnExit;
         }
 
         public void RemoveCallbacks(IMenuActions instance)
@@ -691,12 +720,13 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
         void OnLa(InputAction.CallbackContext context);
         void OnSi(InputAction.CallbackContext context);
         void OnConfirm(InputAction.CallbackContext context);
+        void OnCombination(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {
         void OnNavigation(InputAction.CallbackContext context);
         void OnApply(InputAction.CallbackContext context);
         void OnReturn(InputAction.CallbackContext context);
-        void OnMenu(InputAction.CallbackContext context);
+        void OnExit(InputAction.CallbackContext context);
     }
 }

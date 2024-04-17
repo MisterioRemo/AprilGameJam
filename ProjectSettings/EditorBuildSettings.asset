@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Map_01.unity
     guid: 006acee0b5cc12e4b94e997f00054c89
+  - enabled: 1
+    path: Assets/Scenes/EpilogueCutscene.unity
+    guid: 7557d171bea5166499d4786a03e08240
   m_configObjects: {}

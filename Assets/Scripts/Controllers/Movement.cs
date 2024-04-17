@@ -7,11 +7,11 @@ namespace aprilJam
 {
     public class Movement : MonoBehaviour
     {
-        private bool isMoving= true;
+        private bool isMoving;
         private float movingTime=3;
         private float carrentMove=0;
         private Animator animator;
-        private bool isRotating=true;
+        private bool isRotating;
     
         private float RotTime = 0.3f;
         private float LerpTime = 0;
@@ -66,13 +66,11 @@ namespace aprilJam
 
          void Rotation()
         {
-            if (transform.rotation == endRotation)
-            {
-                isRotating = false; 
-            }
             transform.rotation = Quaternion.Lerp(startRotation, endRotation, LerpTime);
             LerpTime += RotTime * Time.deltaTime;
 
+            if (transform.rotation == endRotation)
+                isRotating = false;
 
         }
         public void StartMovement()
@@ -85,8 +83,8 @@ namespace aprilJam
         {
             isRotating = true;
             animator.SetBool("Stop", true);
-            startRotation=transform.rotation;
-            endRotation = Quaternion.Euler(0,transform.position.y+ Angle, 0);
+            startRotation = transform.rotation;
+            endRotation = Quaternion.Euler(0, transform.eulerAngles.y + Angle, 0);
             LerpTime= 0;
 
         }
@@ -110,29 +108,29 @@ namespace aprilJam
 
         void Update()
         {
-            if (isMoving)
-            {
-                transform.position += transform.forward * Time.deltaTime * 10;
-              
-                carrentMove += Time.deltaTime;
-                if (carrentMove >= movingTime)
-                {
-                   
-                    isMoving = false;
-                    animator.SetBool("Breaststroke", false);
-                    animator.SetBool("Stop", true);
+      if (isMoving)
+      {
+        transform.position += transform.forward * Time.deltaTime * 10;
 
-                }
-                
-            }
-           if(isRotating)
-            {
-                Rotation();
-            }
-           if (skip)
-            {
-                Skip();
-            }
+        carrentMove += Time.deltaTime;
+        if (carrentMove >= movingTime)
+        {
+
+          isMoving = false;
+          animator.SetBool("Breaststroke", false);
+          animator.SetBool("Stop", true);
+
         }
+
+      }
+      if (isRotating)
+      {
+        Rotation();
+      }
+      if (skip)
+      {
+        Skip();
+      }
+    }
     }
 }

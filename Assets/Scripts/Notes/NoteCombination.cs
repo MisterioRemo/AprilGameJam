@@ -9,6 +9,8 @@ namespace aprilJam
   public class NoteCombination: IInitializable
   {
     #region PARAMETERS
+    [Inject] private Movement sailorMovement;
+
     public Dictionary<string, Action> Actions  { get; private set; }
     public int                        MaxLenth { get; private set; } = 5;
     #endregion
@@ -18,8 +20,7 @@ namespace aprilJam
     {
       Actions = new Dictionary<string, Action>()
       {
-        { NotesToKey(new List<Note> { Note.Do, Note.Re, Note.Mi, Note.Fa }), Fun1 }//, 
-          //{NotesToKey(new List<Note>{Note.Do,Note.Do }),}
+        { NotesToKey(new List<Note>{ Note.Do, Note.Do }), sailorMovement.StartRotations45 }
       };
     }
     #endregion
@@ -33,13 +34,6 @@ namespace aprilJam
         sb.Append(note.ToString("D"));
 
       return sb.ToString();
-    }
-    #endregion
-
-    #region CRUTCH
-    public void Fun1()
-    {
-      // crutch for sailor methods
     }
     #endregion
   }

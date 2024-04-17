@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 
 namespace aprilJam
@@ -34,6 +35,16 @@ namespace aprilJam
 
       videoPlayer.clip = video;
       videoPlayer.Prepare();
+    }
+
+    // TEMP!
+    public void Restart()
+    {
+      SceneManager.LoadScene("Map_01");
+    }
+    public void Exit()
+    {
+      Application.Quit();
     }
     #endregion
   }

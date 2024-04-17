@@ -1,23 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 namespace aprilJam
 {
-    public class Sailor : MonoBehaviour
+  public class Sailor : MonoBehaviour
+  {
+    [SerializeField] private int HealsPoint = 100;
+    [SerializeField] private int stamin = 100;
+
+    public Action<EndingType> OnDeath;
+
+
+    public void Hit(int inputDamage)
     {
-       [SerializeField] private int HealsPoint = 100;
-       [SerializeField] private int stamin = 100;
+      HealsPoint -= inputDamage;
 
-        private int damage;
-
-
-        public void Hit(int inputDamage)
-        {
-            HealsPoint -= inputDamage;
-
-        }
+      if (HealsPoint <= 0)
+        OnDeath?.Invoke(EndingType.Lonely);
     }
-
-   
+  }
 }

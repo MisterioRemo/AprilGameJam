@@ -10,6 +10,7 @@ namespace aprilJam
     #region PARAMETERS
     [Inject] private AprilJamInputActions inputActions;
     [Inject] private SirenSong            sirenSong;
+    [Inject] private Sailor               sailor;
 
     [SerializeField] private GameObject combinationWindow;
     #endregion
@@ -19,32 +20,46 @@ namespace aprilJam
     {
       inputActions.Player.Combination.started += ShowCombinationWindow;
       inputActions.Menu.Exit.started          += ReturnToGame;
+      sailor.OnDeath                          += LoadEndingScene;
+      sailor.GetComponent<Movement>().StartMovement(); // TEMP!!!!!!!!!!!!
+      ShowCombinationWindow();
     }
 
     private void OnDestroy()
     {
       inputActions.Player.Combination.started -= ShowCombinationWindow;
       inputActions.Menu.Exit.started          -= ReturnToGame;
+      sailor.OnDeath                          -= LoadEndingScene;
     }
     #endregion
 
     #region INPUT ACTIONS CALLBACKS
     public void ShowCombinationWindow(CallbackContext _context)
     {
+      ShowCombinationWindow();
+    }
+
+    public void ReturnToGame(CallbackContext _context)
+    {
+      ReturnToGame();
+    }
+    #endregion
+
+    #region INTERFACE
+    public void ShowCombinationWindow()
+    {
       inputActions.Player.Disable();
       inputActions.Menu.Enable();
       combinationWindow.SetActive(true);
     }
 
-    public void ReturnToGame(CallbackContext _context)
+    public void ReturnToGame()
     {
       inputActions.Player.Enable();
       inputActions.Menu.Disable();
       combinationWindow.SetActive(false);
     }
-    #endregion
 
-    #region INTERFACE
     public void LoadEndingScene(EndingType _type)
     {
       GameState.Instance.Ending = _type;

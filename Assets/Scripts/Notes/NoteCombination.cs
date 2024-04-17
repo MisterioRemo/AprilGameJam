@@ -20,7 +20,14 @@ namespace aprilJam
     {
       Actions = new Dictionary<string, Action>()
       {
-        { NotesToKey(new List<Note>{ Note.Do, Note.Do }), sailorMovement.StartRotations45 }
+        { NotesToKey(new List<Note>{ Note.Do, Note.Do }), sailorMovement.StartMovement },
+          { NotesToKey(new List<Note>{ Note.Sol, Note.Si,Note.Si }), sailorMovement.StartRotations45},
+          { NotesToKey(new List<Note>{ Note.Sol, Note.Si,Note.Si,Note.Si }), sailorMovement.StartRotations90},
+          { NotesToKey(new List<Note>{ Note.Do, Note.Re,Note.Re }), sailorMovement.StartRotationsMinys45},
+          { NotesToKey(new List<Note>{ Note.Do, Note.Re,Note.Re,Note.Re }), sailorMovement.StartRotationsMinys90},
+          { NotesToKey(new List<Note>{ Note.Do, Note.Sol,Note.Mi,Note.Mi,Note.Mi }), sailorMovement.Dive},
+          { NotesToKey(new List<Note>{ Note.Do, Note.Sol,Note.Do, Note.Do, Note.Do }), sailorMovement.Skip},
+          { NotesToKey(new List<Note>{ Note.Do, Note.Sol,Note.Re, Note.Sol }), sailorMovement.isControls},
       };
     }
     #endregion

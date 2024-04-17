@@ -17,7 +17,7 @@ namespace aprilJam
     #region INTERFACE
     public void StartGame()
     {
-      SceneManager.LoadScene("SampleScene");
+      SceneManager.LoadScene("PrologueCutscene");
     }
 
     public void ShowSettings()

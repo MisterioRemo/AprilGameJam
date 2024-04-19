@@ -282,3 +282,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   palette: {fileID: 11400000, guid: 75285bbbb5150a3498d7f65e23fc0916, type: 2}
+  text: {fileID: 3049728632346342987}

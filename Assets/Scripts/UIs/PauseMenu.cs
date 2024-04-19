@@ -7,14 +7,14 @@ namespace aprilJam
   {
     #region PARAMETERS
     [Inject] private Game gameCtrl;
-
-    [SerializeField] private GameObject SelectedMenuButton;
     #endregion
 
-    private void OnEnable()
+    #region LIFECYCLE
+    private void OnDisable()
     {
-      SetSelectedButton(SelectedMenuButton);
+      ReturnToMainMenu();
     }
+    #endregion
 
     #region INTERFACE
     public void Continue()

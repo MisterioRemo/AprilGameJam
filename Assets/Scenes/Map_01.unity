@@ -291,12 +291,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6362061505690471230, guid: 9612cbe1dbef2934c800dc252d3c9635, type: 3}
---- !u!1 &49605514 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4467504069505428391, guid: c632994dca05e944297e58ca9ffb2d87,
-    type: 3}
-  m_PrefabInstance: {fileID: 7338794458211779212}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &49605515 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3023324046472874576, guid: c632994dca05e944297e58ca9ffb2d87,
@@ -7810,12 +7804,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 5293963592987987574, guid: 9612cbe1dbef2934c800dc252d3c9635, type: 3}
---- !u!1 &1338653500 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4467504069505428391, guid: c632994dca05e944297e58ca9ffb2d87,
-    type: 3}
-  m_PrefabInstance: {fileID: 6452758554874862700}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1343144950 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4856987758188862555, guid: 9612cbe1dbef2934c800dc252d3c9635,
@@ -8235,9 +8223,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MenuWindow: {fileID: 1847026877066744929}
   SettingsWindow: {fileID: 1632385557531370235}
-  SelectedReturnFromSettingsButton: {fileID: 1338653500}
-  SelectedSettingsButton: {fileID: 1506011074}
-  SelectedMenuButton: {fileID: 49605514}
 --- !u!224 &1450741887 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2978521303180112303, guid: 19422be3e981da24d9879d0b54e739fc,
@@ -8612,12 +8597,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7646388661466003197, guid: 9612cbe1dbef2934c800dc252d3c9635, type: 3}
---- !u!1 &1506011074 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4467504069505428391, guid: c632994dca05e944297e58ca9ffb2d87,
-    type: 3}
-  m_PrefabInstance: {fileID: 933483972426598785}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1506285878 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2865052533965362407, guid: 9612cbe1dbef2934c800dc252d3c9635,
@@ -11774,6 +11753,11 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 3786719646414185812, guid: c632994dca05e944297e58ca9ffb2d87,
+        type: 3}
+      propertyPath: isSelected
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4467504069505428391, guid: c632994dca05e944297e58ca9ffb2d87,
         type: 3}
       propertyPath: m_Name
@@ -12395,6 +12379,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontSizeBase
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786719646414185812, guid: c632994dca05e944297e58ca9ffb2d87,
+        type: 3}
+      propertyPath: isSelected
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4467504069505428391, guid: c632994dca05e944297e58ca9ffb2d87,
         type: 3}

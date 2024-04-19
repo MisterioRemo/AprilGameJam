@@ -7,20 +7,36 @@ namespace aprilJam
   public class ButtonState : MonoBehaviour, ISelectHandler, IDeselectHandler
   {
     #region PARAMETERS
-    [SerializeField] private ButtonPalette palette;
-
-    private TextMeshProUGUI text;
+    [SerializeField] private ButtonPalette   palette;
+    [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private bool            isSelected;
     #endregion
 
     #region LIFECYCLE
-    private void Awake()
+    private void OnEnable()
     {
-      text       = GetComponentInChildren<TextMeshProUGUI>();
+      if (isSelected)
+      {
+        SetSelectedButton();
+        OnSelect(null);
+      }
+    }
+
+    public void OnDisable()
+    {
       text.color = palette.normal;
     }
     #endregion
 
     #region METHODS
+    private void SetSelectedButton()
+    {
+      EventSystem.current.SetSelectedGameObject(null);
+      EventSystem.current.SetSelectedGameObject(gameObject);
+    }
+    #endregion
+
+    #region INTERFACE
     public void OnSelect(BaseEventData eventData)
     {
       text.color = palette.active;

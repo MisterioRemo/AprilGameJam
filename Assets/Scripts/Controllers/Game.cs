@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
@@ -5,29 +7,38 @@ using static UnityEngine.InputSystem.InputAction;
 
 namespace aprilJam
 {
-  public class Game : MonoBehaviour
+  public class Game: IInitializable, IDisposable
   {
     #region PARAMETERS
     [Inject] private AprilJamInputActions inputActions;
     [Inject] private SirenSong            sirenSong;
     [Inject] private Sailor               sailor;
 
-    [SerializeField] private GameObject combinationWindow;
+    private GameObject combinationWindow;
+    private GameObject menuWindow;
     #endregion
 
+    public Game(List<GameObject> _uiWindows)
+    {
+      combinationWindow = _uiWindows[0];
+      menuWindow        = _uiWindows[1];
+    }
+
     #region LIFECYCLE
-    private void Start()
+    public void Initialize()
     {
       inputActions.Player.Combination.started += ShowCombinationWindow;
+      inputActions.Player.Menu.started        += ShowMenuWindow;
       inputActions.Menu.Exit.started          += ReturnToGame;
       sailor.OnDeath                          += LoadEndingScene;
-      sailor.GetComponent<Movement>().StartMovement(); // TEMP!!!!!!!!!!!!
+
       ShowCombinationWindow();
     }
 
-    private void OnDestroy()
+    public void Dispose()
     {
       inputActions.Player.Combination.started -= ShowCombinationWindow;
+      inputActions.Player.Menu.started        -= ShowMenuWindow;
       inputActions.Menu.Exit.started          -= ReturnToGame;
       sailor.OnDeath                          -= LoadEndingScene;
     }
@@ -39,25 +50,56 @@ namespace aprilJam
       ShowCombinationWindow();
     }
 
+    private void ShowMenuWindow(CallbackContext _context)
+    {
+      ShowMenuWindow();
+    }
+
     public void ReturnToGame(CallbackContext _context)
     {
       ReturnToGame();
     }
     #endregion
 
+    #region METHODS
+    private void SwithInputAction(bool _toMenu)
+    {
+      if (_toMenu)
+      {
+        inputActions.Player.Disable();
+        inputActions.Menu.Enable();
+      }
+      else
+      {
+        inputActions.Player.Enable();
+        inputActions.Menu.Disable();
+      }
+    }
+    #endregion
+
     #region INTERFACE
     public void ShowCombinationWindow()
     {
-      inputActions.Player.Disable();
-      inputActions.Menu.Enable();
+      SwithInputAction(true);
       combinationWindow.SetActive(true);
+    }
+
+    public void ShowMenuWindow()
+    {
+      SwithInputAction(true);
+      menuWindow.SetActive(true);
     }
 
     public void ReturnToGame()
     {
-      inputActions.Player.Enable();
-      inputActions.Menu.Disable();
+      SwithInputAction(false);
       combinationWindow.SetActive(false);
+      menuWindow.SetActive(false);
+    }
+
+    public void ReturnToMainMenu()
+    {
+      SceneManager.LoadScene("MainMenu");
     }
 
     public void LoadEndingScene(EndingType _type)

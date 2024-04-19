@@ -107,6 +107,15 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""723e3b8c-5aa9-4629-8968-367020c1ffa3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -250,6 +259,17 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Combination"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""30059159-9813-4cf7-9225-c356e191640a"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -467,6 +487,7 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
         m_Player_Si = m_Player.FindAction("Si", throwIfNotFound: true);
         m_Player_Confirm = m_Player.FindAction("Confirm", throwIfNotFound: true);
         m_Player_Combination = m_Player.FindAction("Combination", throwIfNotFound: true);
+        m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Navigation = m_Menu.FindAction("Navigation", throwIfNotFound: true);
@@ -543,6 +564,7 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Si;
     private readonly InputAction m_Player_Confirm;
     private readonly InputAction m_Player_Combination;
+    private readonly InputAction m_Player_Menu;
     public struct PlayerActions
     {
         private @AprilJamInputActions m_Wrapper;
@@ -556,6 +578,7 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
         public InputAction @Si => m_Wrapper.m_Player_Si;
         public InputAction @Confirm => m_Wrapper.m_Player_Confirm;
         public InputAction @Combination => m_Wrapper.m_Player_Combination;
+        public InputAction @Menu => m_Wrapper.m_Player_Menu;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -592,6 +615,9 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
             @Combination.started += instance.OnCombination;
             @Combination.performed += instance.OnCombination;
             @Combination.canceled += instance.OnCombination;
+            @Menu.started += instance.OnMenu;
+            @Menu.performed += instance.OnMenu;
+            @Menu.canceled += instance.OnMenu;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -623,6 +649,9 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
             @Combination.started -= instance.OnCombination;
             @Combination.performed -= instance.OnCombination;
             @Combination.canceled -= instance.OnCombination;
+            @Menu.started -= instance.OnMenu;
+            @Menu.performed -= instance.OnMenu;
+            @Menu.canceled -= instance.OnMenu;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -721,6 +750,7 @@ public partial class @AprilJamInputActions: IInputActionCollection2, IDisposable
         void OnSi(InputAction.CallbackContext context);
         void OnConfirm(InputAction.CallbackContext context);
         void OnCombination(InputAction.CallbackContext context);
+        void OnMenu(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {

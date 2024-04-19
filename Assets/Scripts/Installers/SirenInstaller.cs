@@ -5,7 +5,8 @@ namespace aprilJam
 {
   public class SirenInstaller : MonoInstaller
   {
-    [SerializeField] private GameObject siren;
+    [SerializeField] private GameObject  siren;
+    [SerializeField] private NotesEffect notesEffect;
 
     public override void InstallBindings()
     {
@@ -14,6 +15,8 @@ namespace aprilJam
         .FromNewComponentOn(siren)
         .AsSingle()
         .NonLazy();
+
+      Container.BindInstance(notesEffect).WhenInjectedInto<SirenSong>();
 
       Container
         .BindInterfacesAndSelfTo<NoteCombination>()

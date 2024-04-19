@@ -12,9 +12,9 @@ namespace aprilJam
     #region COLLISIONS
     protected override void ProcessCollision(Collision _collision)
     {
-      Debug.Log($"Apply Damage {DamageAmount}");
-      //Sailor sailor = _collision.gameObject.GetComponent<Sailor>();
-      //sailor.ApplyDamage(DamageAmount);
+      
+      Sailor sailor = _collision.gameObject.GetComponent<Sailor>();
+      sailor.Hit(DamageAmount);
     }
     #endregion
   }

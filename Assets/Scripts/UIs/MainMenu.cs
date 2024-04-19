@@ -14,6 +14,14 @@ namespace aprilJam
     [SerializeField] private GameObject SelectedSettingsButton;
     #endregion
 
+    #region METHODS
+    protected void SetSelectedButton(GameObject _button)
+    {
+      EventSystem.current.SetSelectedGameObject(null);
+      EventSystem.current.SetSelectedGameObject(_button);
+    }
+    #endregion
+
     #region INTERFACE
     public void StartGame()
     {
@@ -24,18 +32,14 @@ namespace aprilJam
     {
       MenuWindow.SetActive(false);
       SettingsWindow.SetActive(true);
-
-      var eventSystem = EventSystem.current;
-      eventSystem.SetSelectedGameObject(SelectedSettingsButton, new BaseEventData(eventSystem));
+      SetSelectedButton(SelectedSettingsButton);
     }
 
     public void ReturnToMainMenu()
     {
       SettingsWindow.SetActive(false);
       MenuWindow.SetActive(true);
-
-      var eventSystem = EventSystem.current;
-      eventSystem.SetSelectedGameObject(SelectedReturnFromSettingsButton, new BaseEventData(eventSystem));
+      SetSelectedButton(SelectedReturnFromSettingsButton);
     }
 
     public void QuitGame()

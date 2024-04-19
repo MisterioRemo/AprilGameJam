@@ -12,12 +12,19 @@ namespace aprilJam
     [Inject] private AprilJamInputActions inputActions;
     [Inject] private NoteCombination      noteCombination;
 
-    private List<Note> pressedNotes;
+    private List<Note>  pressedNotes;
+    private NotesEffect notesEffect;
     #endregion
 
     #region EVENTS
     public event Action<List<Note>> OnSinging;
     #endregion
+
+    [Inject]
+    public void Init(NotesEffect _notesEffect)
+    {
+      notesEffect = _notesEffect;
+    }
 
     #region LIFECYCLE
     private void Start()
@@ -79,6 +86,7 @@ namespace aprilJam
     private void PlayedNoteLa(CallbackContext _context)
     {
       AddNote(Note.La);
+
     }
 
     private void PlayedNoteSi(CallbackContext _context)
@@ -88,6 +96,11 @@ namespace aprilJam
 
     private void ApplyCombination(CallbackContext _context)
     {
+      ApplyCombination();
+    }
+
+    private void ApplyCombination()
+    {
       if (noteCombination.Actions.TryGetValue(noteCombination.NotesToKey(pressedNotes),
                                               out Action action))
       {
@@ -95,6 +108,7 @@ namespace aprilJam
         OnSinging.Invoke(pressedNotes);
       }
 
+      notesEffect.ResetAll();
       pressedNotes.Clear();
     }
     #endregion
@@ -103,9 +117,13 @@ namespace aprilJam
     private bool AddNote(Note _note)
     {
       if (pressedNotes.Count == noteCombination.MaxLenth)
+      {
+        ApplyCombination();
         return false;
+      }
 
       pressedNotes.Add(_note);
+      notesEffect.PlayEffect(_note);
       return true;
     }
     #endregion

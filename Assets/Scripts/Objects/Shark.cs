@@ -12,13 +12,18 @@ namespace aprilJam
     [SerializeField] private float   attackDistance  = 13f;
     [SerializeField] private float   attackCooldown  = 10f;
 
+    [Header("Habitat zone")]
+    [SerializeField] private float habitatZoneRadius;
+    [SerializeField] private float habitatZonePadding = 1f;
+    [SerializeField] private bool  DrawHabitatZone;
+
+    private Vector3 habitatZoneCenter;
     private float   speed;
     private float   rotationSpeed;
     private Vector3 angles = Vector3.zero;
 
     private bool       isChasing;
     private GameObject target;
-    private Vector3    attackTargetPosition;
     private bool       isAttackFinished = true;
     private bool       canAttack        = true;
 
@@ -26,41 +31,42 @@ namespace aprilJam
     #endregion
 
     #region LIFECYCLE
+    private void OnDrawGizmos()
+    {
+      if (DrawHabitatZone)
+      {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position, habitatZoneRadius);
+      }
+    }
+
     private void Awake()
     {
-      animator = GetComponentInChildren<Animator>();
+      animator          = GetComponentInChildren<Animator>();
+      habitatZoneCenter = transform.position;
+
       InvokeRepeating("SetRandomSpeed", 0f, changeSpeedRate);
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
       if (!isAttackFinished)
         return;
 
       if (isChasing)
       {
-        Vector3 targetDirection = attackTargetPosition - transform.position;
-        Vector3 sharkDirection  = Vector3.RotateTowards(transform.forward,
-                                                        targetDirection,
-                                                        speed * Time.deltaTime,
-                                                        0.0f);
-        // Debug.DrawRay(transform.position, sharkDirection, Color.red);
-        transform.rotation = Quaternion.LookRotation(sharkDirection);
-
-        if (targetDirection.magnitude < attackDistance)
-        {
-          isAttackFinished = false;
-          animator.SetTrigger("Attack");
-          Invoke("StartCooldown", 4.4f);
-        }
+        Chase();
       }
       else
       {
-        angles.y          += rotationSpeed * Time.deltaTime;
+        float accCoef      = Vector3.Distance(transform.position, habitatZoneCenter) >= habitatZoneRadius - habitatZonePadding
+                             ? 10f : 1f;
+        angles.y          += accCoef * rotationSpeed * Time.deltaTime;
         transform.rotation = Quaternion.Euler(angles);
       }
 
-      transform.Translate(new Vector3(0, 0, speed * Time.deltaTime));
+      transform.Translate(Vector3.forward * speed * Time.deltaTime);
+      transform.position = habitatZoneCenter + Vector3.ClampMagnitude(transform.position - habitatZoneCenter, habitatZoneRadius);
     }
     #endregion
 
@@ -96,7 +102,24 @@ namespace aprilJam
       isChasing            = true;
       rotationSpeed        = rotationSpeedRange.y;
       speed                = speedRange.y;
-      attackTargetPosition = target.transform.position;
+    }
+
+    private void Chase()
+    {
+      Vector3 targetDirection = target.transform.position - transform.position;
+      Vector3 sharkDirection  = Vector3.RotateTowards(transform.forward,
+                                                      targetDirection,
+                                                      speed * Time.deltaTime,
+                                                      0.0f);
+      // Debug.DrawRay(transform.position, sharkDirection, Color.red);
+      transform.rotation = Quaternion.LookRotation(sharkDirection);
+
+      if (targetDirection.magnitude < attackDistance)
+      {
+        isAttackFinished = false;
+        animator.SetTrigger("Attack");
+        Invoke("StartCooldown", 4.4f);
+      }
     }
 
     protected override void ProcessTrigerCollision(Collider _collision)
@@ -104,6 +127,7 @@ namespace aprilJam
       target = _collision.gameObject;
       if (canAttack) StartChasing();
     }
+
     private void OnTriggerExit(Collider _collision)
     {
       target = null;

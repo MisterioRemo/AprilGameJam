@@ -5,18 +5,35 @@ namespace aprilJam
 {
   public class Sailor : MonoBehaviour
   {
-    [SerializeField] private int HealsPoint = 100;
     [SerializeField] private int stamin = 100;
 
+    #region PROPERTIES
+    [field: SerializeField]
+    public int MaxHealth     { get; private set; } = 100;
+    public int CurrentHealth { get; private set; }
+    #endregion
+
+    #region EVENTS
     public Action OnDeath;
+    public Action<int> OnTakingDamage;
+    #endregion
 
-
-    public void Hit(int inputDamage)
+    #region LIFECYCLE
+    private void Awake()
     {
-      HealsPoint -= inputDamage;
+      CurrentHealth = MaxHealth;
+    }
+    #endregion
 
-      if (HealsPoint <= 0)
+    #region METHODS
+    public void Hit(int _inputDamage)
+    {
+      CurrentHealth -= _inputDamage;
+      OnTakingDamage?.Invoke(CurrentHealth);
+
+      if (CurrentHealth <= 0)
         OnDeath?.Invoke();
     }
+    #endregion
   }
 }

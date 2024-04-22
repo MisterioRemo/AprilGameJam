@@ -11,6 +11,12 @@ namespace aprilJam
     public override void InstallBindings()
     {
       Container
+        .Bind<Siren>()
+        .FromNewComponentOn(siren)
+        .AsSingle()
+        .NonLazy();
+
+      Container
         .Bind<SirenSong>()
         .FromNewComponentOn(siren)
         .AsSingle()

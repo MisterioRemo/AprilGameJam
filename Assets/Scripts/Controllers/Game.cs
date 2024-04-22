@@ -85,20 +85,20 @@ namespace aprilJam
       else
         LoadPrologueScene();
     }
+    #endregion
 
-    private void LoadEndingScene(EndingType _type)
+    #region INTERFACE
+    public void LoadEndingScene(EndingType _type)
     {
       GameState.Instance.Ending = _type;
       SceneManager.LoadScene("EpilogueCutscene");
     }
 
-    private void LoadPrologueScene()
+    public void LoadPrologueScene()
     {
       SceneManager.LoadScene("PrologueCutscene");
     }
-    #endregion
 
-    #region INTERFACE
     public void ShowCombinationWindow()
     {
       SwithInputAction(true);

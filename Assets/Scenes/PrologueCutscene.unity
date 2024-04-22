@@ -1113,6 +1113,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 362471502}
   videos:
+  - {fileID: 32900000, guid: c8193e16cb30ddd429441d714c8e034e, type: 3}
+  - {fileID: 32900000, guid: 400ec79549cf22248a043de41afdc6d9, type: 3}
+  - {fileID: 32900000, guid: 33afef62f339f7d4586bf1b467794920, type: 3}
+  - {fileID: 32900000, guid: 1bdb8e056ff7b3f45827b382ea2001d2, type: 3}
   - {fileID: 32900000, guid: 0fe169a1156fb28439150dd702b4f58b, type: 3}
   - {fileID: 32900000, guid: 2af8def3e1d85c84bbfae7a588678bb0, type: 3}
   btnContainer: {fileID: 971012669}

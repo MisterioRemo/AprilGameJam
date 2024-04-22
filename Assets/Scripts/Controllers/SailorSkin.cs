@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace aprilJam
@@ -27,6 +25,23 @@ namespace aprilJam
       ChangeSkin(SailorNationality);
     }
 #endif
+
+    #region LIFECYCLE
+    private void Awake()
+    {
+      ChangeSkin(GameState.Instance.SailorNationality);
+      ChooseProfession();
+    }
+    #endregion
+
+    #region METHODS
+    private void ChooseProfession()
+    {
+      SailorProfession = GameState.Instance.CanBeAnyProfession
+                           ? (Profession)Random.Range(0, 4)
+                           : Profession.Sailor;
+    }
+    #endregion
 
     #region INTERFACE
     public void ChangeSkin(Nationality _type)

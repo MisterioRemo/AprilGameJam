@@ -30,7 +30,7 @@ namespace aprilJam
       inputActions.Player.Combination.started += ShowCombinationWindow;
       inputActions.Player.Menu.started        += ShowMenuWindow;
       inputActions.Menu.Exit.started          += ReturnToGame;
-      sailor.OnDeath                          += LoadEndingScene;
+      sailor.OnDeath                          += OnSailorDeath;
 
       ShowCombinationWindow();
     }
@@ -40,7 +40,7 @@ namespace aprilJam
       inputActions.Player.Combination.started -= ShowCombinationWindow;
       inputActions.Player.Menu.started        -= ShowMenuWindow;
       inputActions.Menu.Exit.started          -= ReturnToGame;
-      sailor.OnDeath                          -= LoadEndingScene;
+      sailor.OnDeath                          -= OnSailorDeath;
     }
     #endregion
 
@@ -75,6 +75,27 @@ namespace aprilJam
         inputActions.Menu.Disable();
       }
     }
+
+    private void OnSailorDeath()
+    {
+      GameState.Instance.DeathCount++;
+
+      if (GameState.Instance.DeathCount == GameState.Instance.MaxLifeCount)
+        LoadEndingScene(EndingType.Lonely);
+      else
+        LoadPrologueScene();
+    }
+
+    private void LoadEndingScene(EndingType _type)
+    {
+      GameState.Instance.Ending = _type;
+      SceneManager.LoadScene("EpilogueCutscene");
+    }
+
+    private void LoadPrologueScene()
+    {
+      SceneManager.LoadScene("PrologueCutscene");
+    }
     #endregion
 
     #region INTERFACE
@@ -102,16 +123,10 @@ namespace aprilJam
       SceneManager.LoadScene("MainMenu");
     }
 
-    public void LoadEndingScene(EndingType _type)
-    {
-      GameState.Instance.Ending = _type;
-      SceneManager.LoadScene("EpilogueCutscene");
-    }
-
-    public void ReloadScene()
-    {
-      SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+    //public void ReloadScene()
+    //{
+    //  SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    //}
     #endregion
   }
 }

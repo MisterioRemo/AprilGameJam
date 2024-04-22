@@ -8,7 +8,7 @@ namespace aprilJam
     [SerializeField] private int HealsPoint = 100;
     [SerializeField] private int stamin = 100;
 
-    public Action<EndingType> OnDeath;
+    public Action OnDeath;
 
 
     public void Hit(int inputDamage)
@@ -16,7 +16,7 @@ namespace aprilJam
       HealsPoint -= inputDamage;
 
       if (HealsPoint <= 0)
-        OnDeath?.Invoke(EndingType.Lonely);
+        OnDeath?.Invoke();
     }
   }
 }

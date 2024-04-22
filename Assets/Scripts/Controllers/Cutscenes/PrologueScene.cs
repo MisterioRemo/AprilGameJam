@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
@@ -59,7 +60,7 @@ namespace aprilJam
       notesInGrid                   = new List<GameObject>();
       noteToPrefab                  = new Dictionary<Note, GameObject>();
       stage                         = PrologueStage.NotStarted;
-      videoEnumerator               = videos.GetEnumerator();
+      videoEnumerator               = videos.Skip(2 * GameState.Instance.DeathCount).GetEnumerator();
       videoPlayer.loopPointReached += OnVideoEnded;
 
       foreach (var elem in notePrefabs)

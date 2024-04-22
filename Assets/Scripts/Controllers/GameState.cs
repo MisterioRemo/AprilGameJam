@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace aprilJam
@@ -17,12 +15,21 @@ namespace aprilJam
                                      }
 
     #region PARAMETERS
-    public EndingType Ending     = EndingType.Lonely;
-    public int        DeathCount = 0;
+    private int  deathCount         = 0;
+    private bool wereGoodSailorOnce = false;
+
+    public EndingType Ending = EndingType.Lonely;
+
+    public readonly int           MaxLifeCount           = 3;
+    public readonly Nationality[] SailorNationalityOrder = new[] { Nationality.Greek, Nationality.Viking, Nationality.Frenchman };
     #endregion
 
     #region PROPERTIES
-    public int MaxLifeCount { get; } = 3;
+    public int         DeathCount { get => deathCount;
+                                    set => deathCount = Mathf.Min(value, MaxLifeCount);
+                                  }
+    public bool        CanBeAnyProfession => (DeathCount == MaxLifeCount - 1 && !wereGoodSailorOnce) ? false : true;
+    public Nationality SailorNationality  => SailorNationalityOrder[DeathCount];
     #endregion
   }
 }

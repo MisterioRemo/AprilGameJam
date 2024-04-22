@@ -5,7 +5,7 @@ namespace aprilJam
 
   public class Obstacle : InteractableObject
   {
-    #region PARAMETERS
+    #region PROPERTIES
     [field: SerializeField] public int DamageAmount { get; private set; }
     #endregion
 

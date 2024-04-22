@@ -29,13 +29,16 @@ namespace aprilJam
     #endregion
 
     #region METHODS
-    private bool IsSailor(GameObject _object)
+    protected bool IsSailor(GameObject _object)
     {
       return _object.CompareTag("Sailor");
     }
 
-    private bool IsAllowedTag(GameObject _object)
+    protected bool IsAllowedTag(GameObject _object)
     {
+      if (collisionTags == null || collisionTags.Count == 0)
+        return false;
+
       foreach (var tag in collisionTags)
       {
         if (!_object.CompareTag(tag))

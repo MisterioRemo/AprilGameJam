@@ -10,7 +10,7 @@ namespace aprilJam
     #region PARAMETERS
     [SerializeField] private Log               logPrefab;
     [SerializeField] private List<PathCreator> pathCreators;
-    [SerializeField] private int               logPerSec;
+    [SerializeField] private float             logPerSec;
     [SerializeField] private int               poolCapacity;
 
     private ObjectPool<Log> pool;

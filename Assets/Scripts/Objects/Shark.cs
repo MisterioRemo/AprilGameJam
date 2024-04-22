@@ -8,7 +8,6 @@ namespace aprilJam
     [SerializeField] private Vector2 speedRange;
     [SerializeField] private Vector2 rotationSpeedRange;
     [SerializeField] private float   changeSpeedRate = 1f;
-    [SerializeField] private float   chasingCooldown = 10f;
     [SerializeField] private float   attackDistance  = 13f;
     [SerializeField] private float   attackCooldown  = 10f;
 
@@ -27,7 +26,8 @@ namespace aprilJam
     private bool       isAttackFinished = true;
     private bool       canAttack        = true;
 
-    private Animator animator;
+    private SphereCollider detectCollider;
+    private Animator       animator;
     #endregion
 
     #region LIFECYCLE
@@ -42,6 +42,7 @@ namespace aprilJam
 
     private void Awake()
     {
+      detectCollider    = GetComponent<SphereCollider>();
       animator          = GetComponentInChildren<Animator>();
       habitatZoneCenter = transform.position;
 
@@ -85,12 +86,14 @@ namespace aprilJam
       canAttack        = false;
       isChasing        = false;
       isAttackFinished = true;
+      target           = null;
       Invoke("StopCooldown", attackCooldown);
     }
 
     private void StopCooldown()
     {
       canAttack = true;
+      DetectSailor();
       StartChasing();
     }
 
@@ -128,9 +131,18 @@ namespace aprilJam
       if (canAttack) StartChasing();
     }
 
-    private void OnTriggerExit(Collider _collision)
+    private void DetectSailor()
     {
-      target = null;
+      Collider[] hitColliders = Physics.OverlapSphere(detectCollider.center, detectCollider.radius);
+
+      foreach (var hitCollider in hitColliders)
+      {
+        if (IsSailor(hitCollider.transform.root.gameObject))
+        {
+          target = hitCollider.gameObject;
+          return;
+        }
+      }
     }
     #endregion
   }

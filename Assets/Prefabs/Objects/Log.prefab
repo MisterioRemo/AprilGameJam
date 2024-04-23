@@ -133,6 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionTags:
   - LogDrivingEnd
+  sfxSound: HitLog
   <DamageAmount>k__BackingField: 10
   meshes:
   - {fileID: 7112876292881999331, guid: 99333492c116e3449a98a39a4f39a9da, type: 3}

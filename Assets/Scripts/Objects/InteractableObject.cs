@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace aprilJam
 {
@@ -8,6 +9,9 @@ namespace aprilJam
   {
     #region PARAMETERS
     [SerializeField] protected List<string> collisionTags;
+    [SerializeField] protected string       sfxSound;
+
+    [Inject] protected AudioManager audioCtrl;
     #endregion
 
     #region COLLISIONS
@@ -25,6 +29,7 @@ namespace aprilJam
         return;
 
       ProcessCollision(_collision);
+      PlaySound(sfxSound);
     }
     #endregion
 
@@ -46,6 +51,11 @@ namespace aprilJam
       }
 
       return true;
+    }
+
+    protected void PlaySound(string _name)
+    {
+      audioCtrl.PlaySFX(_name);
     }
 
     protected virtual void ProcessTrigerCollision(Collider _collision)

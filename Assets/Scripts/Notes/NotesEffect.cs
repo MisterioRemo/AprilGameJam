@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace aprilJam
 {
-  [RequireComponent(typeof(AudioSource))]
   public class NotesEffect : MonoBehaviour
   {
     [Serializable]
@@ -24,15 +24,15 @@ namespace aprilJam
     #region PARAMETERS
     [SerializeField] private List<NoteEffect> effectList;
 
-    private AudioSource               audioSource;
+    [Inject] private AudioManager audioCtrl;
+
     private Dictionary<Note, Effects> effectMap;
     #endregion
 
     #region LIFECYCLE
     private void Awake()
     {
-      audioSource = GetComponent<AudioSource>();
-      effectMap   = new Dictionary<Note, Effects>();
+      effectMap = new Dictionary<Note, Effects>();
 
       foreach (var elem in effectList)
         effectMap.Add(elem.note, elem.effects);
@@ -48,7 +48,7 @@ namespace aprilJam
         return;
 
       LeanTween.scale(effects.uiElement, new Vector3(1.2f, 1.2f, 1.2f), 0.3f).setEase(LeanTweenType.easeOutQuint);
-      // audioSource.PlayOneShot(effects.sound, volume);
+      audioCtrl.PlaySFX("Note");
     }
 
     public void ResetAll()

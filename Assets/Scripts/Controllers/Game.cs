@@ -123,10 +123,10 @@ namespace aprilJam
       SceneManager.LoadScene("MainMenu");
     }
 
-    //public void ReloadScene()
-    //{
-    //  SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    //}
+    public string GetSceneName()
+    {
+      return SceneManager.GetActiveScene().name;
+    }
     #endregion
   }
 }

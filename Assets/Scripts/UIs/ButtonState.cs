@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Zenject;
 
 namespace aprilJam
 {
@@ -10,6 +11,8 @@ namespace aprilJam
     [SerializeField] private ButtonPalette   palette;
     [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private bool            isSelected;
+
+    [Inject] private AudioManager audioCtrl;
     #endregion
 
     #region LIFECYCLE
@@ -40,6 +43,7 @@ namespace aprilJam
     public void OnSelect(BaseEventData eventData)
     {
       text.color = palette.active;
+      audioCtrl.PlaySFX("Button");
     }
 
     public void OnDeselect(BaseEventData eventData)
@@ -50,6 +54,7 @@ namespace aprilJam
     public void OnPressed()
     {
       text.color = palette.pressed;
+      audioCtrl.PlaySFX("ButtonPressed");
     }
     #endregion
   }

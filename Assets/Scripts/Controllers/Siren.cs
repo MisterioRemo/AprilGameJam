@@ -16,9 +16,10 @@ namespace aprilJam
     #region PROPERTIES
     private Animator animator;
 
-    [Inject] private Sailor    sailor;
-    [Inject] private SirenSong sirenSong;
-    [Inject] private Game      gameCtrl;
+    [Inject] private Sailor       sailor;
+    [Inject] private SirenSong    sirenSong;
+    [Inject] private Game         gameCtrl;
+    [Inject] private AudioManager audioCtrl;
     #endregion
 
     #region LIFECYCLE
@@ -27,7 +28,7 @@ namespace aprilJam
       animator = GetComponentInChildren<Animator>();
 
       sailor.OnTakingDamage += PlayDamageAnimation;
-      sirenSong.OnSinging   += PlaySongAnimation;
+      sirenSong.OnSinging   += PlaySong;
 
       InvokeRepeating("PlayLoveAnimation", 0f, 30f);
     }
@@ -35,7 +36,7 @@ namespace aprilJam
     private void OnDestroy()
     {
       sailor.OnTakingDamage -= PlayDamageAnimation;
-      sirenSong.OnSinging   -= PlaySongAnimation;
+      sirenSong.OnSinging   -= PlaySong;
     }
 
     private void OnTriggerEnter(Collider _other)
@@ -68,9 +69,10 @@ namespace aprilJam
       PlayAnimation(AnimTrigger.Song, Random.Range(0, 3));
     }
 
-    private void PlaySongAnimation(System.Collections.Generic.List<Note> _notes)
+    private void PlaySong(System.Collections.Generic.List<Note> _notes)
     {
       PlaySongAnimation();
+      audioCtrl.PlaySFX("Song" + Random.Range(0, 2));
     }
 
     private void PlayLoveAnimation()

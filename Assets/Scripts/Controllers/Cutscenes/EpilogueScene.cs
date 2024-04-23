@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
@@ -7,10 +8,10 @@ namespace aprilJam
   public class EpilogueScene : MonoBehaviour
   {
     #region PARAMETERS
-    [SerializeField] private VideoPlayer videoPlayer;
-    [SerializeField] private VideoClip   happyVideo;
-    [SerializeField] private VideoClip   sadVideo;
-    [SerializeField] private VideoClip   lonelyVideo;
+    [SerializeField] private VideoPlayer     videoPlayer;
+    [SerializeField] private List<VideoClip> happyVideo;
+    [SerializeField] private List<VideoClip> sadVideo;
+    [SerializeField] private VideoClip       lonelyVideo;
     #endregion
 
     #region LIFECYCLE
@@ -21,10 +22,10 @@ namespace aprilJam
       switch (GameState.Instance.Ending)
       {
         case EndingType.Happy:
-          video = happyVideo;
+          video = happyVideo[GameState.Instance.DeathCount];
           break;
         case EndingType.Sad:
-          video = sadVideo;
+          video = sadVideo[GameState.Instance.DeathCount];
           break;
         case EndingType.Lonely:
           video = lonelyVideo;
@@ -33,18 +34,21 @@ namespace aprilJam
           break;
       }
 
-      videoPlayer.clip = video;
-      videoPlayer.Prepare();
+      videoPlayer.loopPointReached += OnVideoEnded;
+      videoPlayer.clip              = video;
+      videoPlayer.Play();
     }
 
-    // TEMP!
-    public void Restart()
+    private void OnDestroy()
     {
-      SceneManager.LoadScene("Map_01");
+      videoPlayer.loopPointReached -= OnVideoEnded;
     }
-    public void Exit()
+    #endregion
+
+    #region CALLBACKS
+    private void OnVideoEnded(VideoPlayer _player)
     {
-      Application.Quit();
+      SceneManager.LoadScene("MainMenu");
     }
     #endregion
   }

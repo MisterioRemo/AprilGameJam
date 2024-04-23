@@ -666,7 +666,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &467251741
 RectTransform:
   m_ObjectHideFlags: 0
@@ -940,7 +940,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &995030287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -954,6 +954,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   palette: {fileID: 11400000, guid: 75285bbbb5150a3498d7f65e23fc0916, type: 2}
+  text: {fileID: 0}
+  isSelected: 0
 --- !u!114 &995030288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1182,7 +1184,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1731947511
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1216,6 +1218,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   palette: {fileID: 11400000, guid: 75285bbbb5150a3498d7f65e23fc0916, type: 2}
+  text: {fileID: 0}
+  isSelected: 0
 --- !u!114 &1731947513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1473,8 +1477,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 362471502}
-  happyVideo: {fileID: 0}
-  sadVideo: {fileID: 0}
+  happyVideo:
+  - {fileID: 32900000, guid: ea3f03c939ee13c468495c4a9f863d55, type: 3}
+  - {fileID: 32900000, guid: 6b30a1222de87984091f7ce1a292896d, type: 3}
+  - {fileID: 32900000, guid: 71b4d02d4f1079f478eeed355169b793, type: 3}
+  sadVideo: []
   lonelyVideo: {fileID: 0}
 --- !u!1 &2078052464
 GameObject:
@@ -1493,7 +1500,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2078052465
 RectTransform:
   m_ObjectHideFlags: 0

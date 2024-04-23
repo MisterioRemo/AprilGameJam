@@ -34,11 +34,11 @@ namespace aprilJam
 
       inputActions.Player.Do.started  += PlayedNoteDo;
       inputActions.Player.Re.started  += PlayedNoteRe;
-      inputActions.Player.Mi.started  += PlayedNoteMi;
+      //inputActions.Player.Mi.started  += PlayedNoteMi;
       inputActions.Player.Fa.started  += PlayedNoteFa;
-      inputActions.Player.Sol.started += PlayedNoteSol;
-      inputActions.Player.La.started  += PlayedNoteLa;
-      inputActions.Player.Si.started  += PlayedNoteSi;
+      //inputActions.Player.Sol.started += PlayedNoteSol;
+      //inputActions.Player.La.started  += PlayedNoteLa;
+      //inputActions.Player.Si.started  += PlayedNoteSi;
 
       inputActions.Player.Confirm.started += ApplyCombination;
     }
@@ -47,11 +47,11 @@ namespace aprilJam
     {
       inputActions.Player.Do.started  -= PlayedNoteDo;
       inputActions.Player.Re.started  -= PlayedNoteRe;
-      inputActions.Player.Mi.started  -= PlayedNoteMi;
+      //inputActions.Player.Mi.started  -= PlayedNoteMi;
       inputActions.Player.Fa.started  -= PlayedNoteFa;
-      inputActions.Player.Sol.started -= PlayedNoteSol;
-      inputActions.Player.La.started  -= PlayedNoteLa;
-      inputActions.Player.Si.started  -= PlayedNoteSi;
+      //inputActions.Player.Sol.started -= PlayedNoteSol;
+      //inputActions.Player.La.started  -= PlayedNoteLa;
+      //inputActions.Player.Si.started  -= PlayedNoteSi;
 
       inputActions.Player.Confirm.started -= ApplyCombination;
     }
@@ -68,31 +68,31 @@ namespace aprilJam
       AddNote(Note.Re);
     }
 
-    private void PlayedNoteMi(CallbackContext _context)
-    {
-      AddNote(Note.Mi);
-    }
+    //private void PlayedNoteMi(CallbackContext _context)
+    //{
+    //  AddNote(Note.Mi);
+    //}
 
     private void PlayedNoteFa(CallbackContext _context)
     {
       AddNote(Note.Fa);
     }
 
-    private void PlayedNoteSol(CallbackContext _context)
-    {
-      AddNote(Note.Sol);
-    }
+    //private void PlayedNoteSol(CallbackContext _context)
+    //{
+    //  AddNote(Note.Sol);
+    //}
 
-    private void PlayedNoteLa(CallbackContext _context)
-    {
-      AddNote(Note.La);
+    //private void PlayedNoteLa(CallbackContext _context)
+    //{
+    //  AddNote(Note.La);
 
-    }
+    //}
 
-    private void PlayedNoteSi(CallbackContext _context)
-    {
-      AddNote(Note.Si);
-    }
+    //private void PlayedNoteSi(CallbackContext _context)
+    //{
+    //  AddNote(Note.Si);
+    //}
 
     private void ApplyCombination(CallbackContext _context)
     {

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
@@ -7,54 +6,40 @@ namespace aprilJam
 {
   public class NotesEffect : MonoBehaviour
   {
-    [Serializable]
-    private struct Effects
-    {
-      public GameObject uiElement;
-      public AudioClip  sound;
-    }
-
-    [Serializable]
-    private struct NoteEffect
-    {
-      public Note    note;
-      public Effects effects;
-    }
-
     #region PARAMETERS
-    [SerializeField] private List<NoteEffect> effectList;
+    [SerializeField] private NotePrefabs notePrefabs;
+    [SerializeField] private GameObject  noteContainer;
+
+    private Dictionary<Note, GameObject> noteToPrefab;
 
     [Inject] private AudioManager audioCtrl;
-
-    private Dictionary<Note, Effects> effectMap;
     #endregion
 
     #region LIFECYCLE
     private void Awake()
     {
-      effectMap = new Dictionary<Note, Effects>();
+      noteToPrefab = new Dictionary<Note, GameObject>();
 
-      foreach (var elem in effectList)
-        effectMap.Add(elem.note, elem.effects);
+      foreach (var elem in notePrefabs.Value)
+        noteToPrefab.Add(elem.note, elem.prefab);
     }
     #endregion
 
     #region INTERFACE
     public void PlayEffect(Note _note)
     {
-      Effects effects;
-
-      if (!effectMap.TryGetValue(_note, out effects))
-        return;
-
-      LeanTween.scale(effects.uiElement, new Vector3(1.2f, 1.2f, 1.2f), 0.3f).setEase(LeanTweenType.easeOutQuint);
-      audioCtrl.PlaySFX("Note");
+      if (noteToPrefab.TryGetValue(_note, out GameObject prefab))
+      {
+        var note = Instantiate(prefab, noteContainer.transform);
+        LeanTween.scale(note, new Vector3(1.2f, 1.2f, 1.2f), 0.3f).setEase(LeanTweenType.easeOutQuint);
+        audioCtrl.PlaySFX("Note");
+      }
     }
 
     public void ResetAll()
     {
-      foreach (var effect in effectMap)
-        LeanTween.scale(effect.Value.uiElement, new Vector3(1f, 1f, 1f), 0.3f).setEase(LeanTweenType.easeOutQuint);
+      foreach (Transform child in noteContainer.transform)
+        Destroy(child.gameObject);
     }
     #endregion
   }

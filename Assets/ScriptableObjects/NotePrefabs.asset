@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a98c6de5ab500444a5ea7117add5b7d, type: 3}
+  m_Name: NotePrefabs
+  m_EditorClassIdentifier: 
+  Value:
+  - note: 0
+    prefab: {fileID: 5364159052475614940, guid: add17a3c027a01843a896f4600b55632,
+      type: 3}
+  - note: 1
+    prefab: {fileID: 560295251493264281, guid: e0faa18d359cadc459ed6e28468f9a3e, type: 3}
+  - note: 3
+    prefab: {fileID: 4044840476374205671, guid: 24caf363b995725439f4104a0bba02fe,
+      type: 3}

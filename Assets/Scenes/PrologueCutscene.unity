@@ -156,7 +156,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960.28235, y: -185}
+  m_AnchoredPosition: {x: 960.12787, y: -185}
   m_SizeDelta: {x: 0, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &14901652
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_CellSize: {x: 110, y: 110}
   m_Spacing: {x: 10, y: 0}
   m_Constraint: 1
-  m_ConstraintCount: 2
+  m_ConstraintCount: 5
 --- !u!1 &197163734
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,7 +810,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960.28235, y: -50}
+  m_AnchoredPosition: {x: 960.12787, y: -50}
   m_SizeDelta: {x: 700, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1168346547
@@ -1119,29 +1119,10 @@ MonoBehaviour:
   - {fileID: 32900000, guid: 1bdb8e056ff7b3f45827b382ea2001d2, type: 3}
   - {fileID: 32900000, guid: 0fe169a1156fb28439150dd702b4f58b, type: 3}
   - {fileID: 32900000, guid: 2af8def3e1d85c84bbfae7a588678bb0, type: 3}
+  notePrefabs: {fileID: 11400000, guid: df7fc45a73c65b542a58386433e4636e, type: 2}
   btnContainer: {fileID: 971012669}
-  notePrefabs:
-  - note: 0
-    prefab: {fileID: 5364159052475614940, guid: add17a3c027a01843a896f4600b55632,
-      type: 3}
-  - note: 1
-    prefab: {fileID: 560295251493264281, guid: e0faa18d359cadc459ed6e28468f9a3e, type: 3}
-  - note: 2
-    prefab: {fileID: 8599728628730999150, guid: e603a82fc8c1a6d469f25f4e01fd19a5,
-      type: 3}
-  - note: 3
-    prefab: {fileID: 4044840476374205671, guid: 24caf363b995725439f4104a0bba02fe,
-      type: 3}
-  - note: 4
-    prefab: {fileID: 5284883818636413337, guid: f054d7fec689b974698beb390fd38126,
-      type: 3}
-  - note: 5
-    prefab: {fileID: 866485573083664518, guid: 19422be3e981da24d9879d0b54e739fc, type: 3}
-  - note: 6
-    prefab: {fileID: 4457694537173250512, guid: 2b85c6923d714b144b5c0a300cb97e4c,
-      type: 3}
   tooltip: {fileID: 474042539}
-  noteCombination: 00040106
+  noteCombination: 0100030103
   gameSceneName: Map_01
 --- !u!4 &2053324852
 Transform:

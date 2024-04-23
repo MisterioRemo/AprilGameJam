@@ -21,22 +21,15 @@ namespace aprilJam
       SecondIntro
     }
 
-    [Serializable]
-    private struct NotePrefab
-    {
-      public Note       note;
-      public GameObject prefab;
-    }
-
     #region PARAMETERS
     [Header("Video")]
     [SerializeField] private VideoPlayer     videoPlayer;
     [SerializeField] private List<VideoClip> videos;
 
     [Header("Canvas")]
-    [SerializeField] private GameObject       btnContainer;
-    [SerializeField] private List<NotePrefab> notePrefabs;
-    [SerializeField] private GameObject       tooltip;
+    [SerializeField] private NotePrefabs notePrefabs;
+    [SerializeField] private GameObject  btnContainer;
+    [SerializeField] private GameObject  tooltip;
 
     [Space(16)]
 
@@ -63,7 +56,7 @@ namespace aprilJam
       videoEnumerator               = videos.Skip(2 * GameState.Instance.DeathCount).GetEnumerator();
       videoPlayer.loopPointReached += OnVideoEnded;
 
-      foreach (var elem in notePrefabs)
+      foreach (var elem in notePrefabs.Value)
         noteToPrefab.Add(elem.note, elem.prefab);
 
       PrepareVideo();

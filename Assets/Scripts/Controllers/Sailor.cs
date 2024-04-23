@@ -5,7 +5,10 @@ namespace aprilJam
 {
   public class Sailor : MonoBehaviour
   {
-    [SerializeField] private int stamin = 100;
+    #region PARAMETERS
+    [SerializeField] private ParticleSystem boomEffect;
+    [SerializeField] private int            stamin = 100;
+    #endregion
 
     #region PROPERTIES
     [field: SerializeField]
@@ -30,9 +33,15 @@ namespace aprilJam
     {
       CurrentHealth -= _inputDamage;
       OnTakingDamage?.Invoke(CurrentHealth);
+      PlayBoomEffect();
 
       if (CurrentHealth <= 0)
         OnDeath?.Invoke();
+    }
+
+    public void PlayBoomEffect()
+    {
+      boomEffect.Play();
     }
     #endregion
   }

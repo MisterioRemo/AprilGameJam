@@ -5,6 +5,8 @@ namespace aprilJam
   public class SailorSkin : MonoBehaviour
   {
     #region PARAMETERS
+    [SerializeField] private ParticleSystem poofEffect;
+
     [SerializeField] private GameObject greekSkin;
     [SerializeField] private GameObject vikingSkin;
     [SerializeField] private GameObject frenchmanSkin;
@@ -66,6 +68,8 @@ namespace aprilJam
         swords.SetActive(true);
       else if (SailorProfession == Profession.Pirat)
         parrot.SetActive(true);
+
+      poofEffect.Play();
     }
     #endregion
   }

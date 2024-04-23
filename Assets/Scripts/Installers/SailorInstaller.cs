@@ -10,7 +10,7 @@ namespace aprilJam
     {
       Container
         .Bind<Sailor>()
-        .FromNewComponentOn(sailor)
+        .FromComponentOn(sailor)
         .AsSingle()
         .NonLazy();
 

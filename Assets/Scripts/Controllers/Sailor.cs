@@ -31,6 +31,9 @@ namespace aprilJam
     #region METHODS
     public void Hit(int _inputDamage)
     {
+      if (_inputDamage == 0)
+        return;
+
       CurrentHealth -= _inputDamage;
       OnTakingDamage?.Invoke(CurrentHealth);
       PlayBoomEffect();
@@ -41,6 +44,9 @@ namespace aprilJam
 
     public void PlayBoomEffect()
     {
+      if (!boomEffect.gameObject.activeSelf)
+        boomEffect.gameObject.SetActive(true);
+
       boomEffect.Play();
     }
     #endregion

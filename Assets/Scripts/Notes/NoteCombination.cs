@@ -19,14 +19,14 @@ namespace aprilJam
     {
       Actions = new Dictionary<string, Action>()
       {
-        { NotesToKey(new List<Note>{ Note.Do, Note.Do }), sailorMovement.StartMovement },
-        { NotesToKey(new List<Note>{ Note.Do, Note.Fa }), sailorMovement.StartRotations45 },
+        { NotesToKey(new List<Note>{ Note.Do, Note.Do }), sailorMovement.Move },
+        { NotesToKey(new List<Note>{ Note.Do, Note.Fa }), sailorMovement.StartRotations15 },
         { NotesToKey(new List<Note>{ Note.Do, Note.Fa, Note.Fa }), sailorMovement.StartRotations90 },
-        { NotesToKey(new List<Note>{ Note.Do, Note.Re }), sailorMovement.StartRotationsMinys45 },
-        { NotesToKey(new List<Note>{ Note.Do, Note.Re, Note.Re }), sailorMovement.StartRotationsMinys90 },
-        // { NotesToKey(new List<Note>{ Note.Do, Note.Re, Note.Fa }), sailorMovement.TurnAround },
+        { NotesToKey(new List<Note>{ Note.Do, Note.Re }), sailorMovement.StartRotationsMinus15 },
+        { NotesToKey(new List<Note>{ Note.Do, Note.Re, Note.Re }), sailorMovement.StartRotationsMinus90 },
+        { NotesToKey(new List<Note>{ Note.Do, Note.Re, Note.Fa }), sailorMovement.TurnAround },
         { NotesToKey(new List<Note>{ Note.Re, Note.Do, Note.Fa }), sailorMovement.Dive },
-        { NotesToKey(new List<Note>{ Note.Fa, Note.Do, Note.Fa }), sailorMovement.Skip },
+        { NotesToKey(new List<Note>{ Note.Fa, Note.Do, Note.Re }), sailorMovement.Skip },
         { NotesToKey(new List<Note>{ Note.Re, Note.Do, Note.Fa, Note.Re, Note.Fa }), sailorMovement.isControls },
       };
     }

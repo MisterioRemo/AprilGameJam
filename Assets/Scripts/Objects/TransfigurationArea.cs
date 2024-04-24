@@ -18,7 +18,7 @@ namespace aprilJam
     #region METHODS
     protected override void ProcessTrigerCollision(Collider _collision)
     {
-      var sailorSkin = _collision.transform.root.GetComponent<SailorSkin>();
+      var sailorSkin = _collision.transform.root.GetComponentInChildren<SailorSkin>();
       sailorSkin.SetProfessionAttribute();
       StopAllParticleSystem();
     }

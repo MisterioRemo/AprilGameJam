@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Sailor
   - LogDrivingEnd
+  - SkipRock
   layers:
   - Default
   - TransparentFX

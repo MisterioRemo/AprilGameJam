@@ -1481,7 +1481,10 @@ MonoBehaviour:
   - {fileID: 32900000, guid: ea3f03c939ee13c468495c4a9f863d55, type: 3}
   - {fileID: 32900000, guid: 6b30a1222de87984091f7ce1a292896d, type: 3}
   - {fileID: 32900000, guid: 71b4d02d4f1079f478eeed355169b793, type: 3}
-  sadVideo: []
+  sadVideo:
+  - {fileID: 32900000, guid: f11dedf6937a7a34780a8e8edfb71a25, type: 3}
+  - {fileID: 32900000, guid: 7ab763af65803824596e02a9c3925b36, type: 3}
+  - {fileID: 32900000, guid: f2992ee23b9041e419edf9f6854077ce, type: 3}
   lonelyVideo: {fileID: 0}
 --- !u!1 &2078052464
 GameObject:

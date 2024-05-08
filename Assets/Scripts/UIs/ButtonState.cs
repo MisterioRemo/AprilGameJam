@@ -12,6 +12,8 @@ namespace aprilJam
     [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private bool            isSelected;
 
+    private bool useSFX = false;
+
     [Inject] private AudioManager audioCtrl;
     #endregion
 
@@ -23,6 +25,8 @@ namespace aprilJam
         SetSelectedButton();
         OnSelect(null);
       }
+
+      useSFX = true;
     }
 
     public void OnDisable()
@@ -43,7 +47,7 @@ namespace aprilJam
     public void OnSelect(BaseEventData eventData)
     {
       text.color = palette.active;
-      audioCtrl.PlaySFX("Button");
+      if (useSFX) audioCtrl.PlaySFX("Button");
     }
 
     public void OnDeselect(BaseEventData eventData)
@@ -54,7 +58,7 @@ namespace aprilJam
     public void OnPressed()
     {
       text.color = palette.pressed;
-      audioCtrl.PlaySFX("ButtonPressed");
+      if (useSFX) audioCtrl.PlaySFX("ButtonPressed");
     }
     #endregion
   }

@@ -1,8 +1,6 @@
-using ModestTree;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Zenject;
 
 namespace aprilJam
 {
@@ -18,11 +16,14 @@ namespace aprilJam
     #region PARAMETERS
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioSource songSource;
     [SerializeField] private List<Sound> musicSoundsList;
     [SerializeField] private List<Sound> sfxSoundsList;
+    [SerializeField] private List<Sound> songSoundsList;
 
     private Dictionary<string, AudioClip> musicSounds;
     private Dictionary<string, AudioClip> sfxSounds;
+    private Dictionary<string, AudioClip> songSounds;
     #endregion
 
     #region PROPERTIES
@@ -34,11 +35,14 @@ namespace aprilJam
     {
       musicSounds = new Dictionary<string, AudioClip>();
       sfxSounds   = new Dictionary<string, AudioClip>();
+      songSounds  = new Dictionary<string, AudioClip>();
 
       foreach (var sound in musicSoundsList)
         musicSounds.Add(sound.name, sound.clip);
       foreach (var sound in sfxSoundsList)
         sfxSounds.Add(sound.name, sound.clip);
+      foreach (var sound in songSoundsList)
+        songSounds.Add(sound.name, sound.clip);
     }
 
     private void Start()
@@ -62,6 +66,42 @@ namespace aprilJam
     {
       if (sfxSounds.TryGetValue(_name, out AudioClip clip))
         sfxSource.PlayOneShot(clip);
+    }
+
+    public void PlaySong(string _name)
+    {
+      if (songSounds.TryGetValue(_name, out AudioClip clip))
+        songSource.PlayOneShot(clip);
+    }
+
+    public void ToggleMusic()
+    {
+      musicSource.mute = !musicSource.mute;
+    }
+
+    public void ToggleSFX()
+    {
+      sfxSource.mute = !sfxSource.mute;
+    }
+
+    public void ToggleSong()
+    {
+      songSource.mute = !songSource.mute;
+    }
+
+    public void MusicVolume(float _volume)
+    {
+      musicSource.volume = _volume;
+    }
+
+    public void SFXVolume(float _volume)
+    {
+      sfxSource.volume = _volume;
+    }
+
+    public void SongVolume(float _volume)
+    {
+      songSource.volume = _volume;
     }
     #endregion
   }

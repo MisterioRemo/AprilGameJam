@@ -28,6 +28,7 @@ namespace aprilJam
 
     #region PROPERTIES
     public string PlayAtStartClipName { get; set; }
+    public int    SongCount => songSounds.Count;
     #endregion
 
     #region LIFECYCLE

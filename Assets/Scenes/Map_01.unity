@@ -3206,7 +3206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ce50600c8be3614ba8fa516243b9339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorPalette: {fileID: 11400000, guid: aeb78733d7c33b942a4358a69f94853f, type: 2}
+  colorPalette: {fileID: 11400000, guid: ad7d48c7d14150e4c95d74640b6c621a, type: 2}
   loglinePrefab: {fileID: 7794220589286952726, guid: d7cd49c1d36a5cc46804badb4b598265,
     type: 3}
   maxLoglineCount: 10

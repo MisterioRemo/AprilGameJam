@@ -113,8 +113,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.818113, y: 0.9732361, z: -25.441566}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6135679411904516233}
   m_Father: {fileID: 0}
@@ -200,7 +200,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.3433486
-  m_Height: 2.1537883
+  m_Radius: 0.44075775
+  m_Height: 2.6214046
   m_Direction: 2
-  m_Center: {x: 0.026164562, y: 0.030903157, z: -0.0066479137}
+  m_Center: {x: 0.006676674, y: 0.03090316, z: 0.022573471}

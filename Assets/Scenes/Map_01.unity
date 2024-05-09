@@ -1342,8 +1342,8 @@ MonoBehaviour:
   editorData:
     _bezierPath:
       points:
-      - {x: 10.185413, y: 0, z: -2.0034103}
-      - {x: 11.185413, y: 0, z: -1.5034103}
+      - {x: 10.185413, y: -1.6381972, z: -2.0034103}
+      - {x: 11.185413, y: -1.6381972, z: -1.5034103}
       - {x: 5.6960564, y: 0, z: 11.8964615}
       - {x: 20.945572, y: 0, z: 18.028511}
       - {x: 29.268951, y: 0, z: 21.375462}
@@ -1353,7 +1353,7 @@ MonoBehaviour:
       - {x: 52.67991, y: 0, z: 30.74746}
       - {x: 54.57542, y: 0, z: 45.350807}
       isClosed: 0
-      space: 2
+      space: 0
       controlMode: 0
       autoControlLength: 0.3
       boundsUpToDate: 0
@@ -1368,8 +1368,8 @@ MonoBehaviour:
       globalNormalsAngle: 0
       flipNormals: 0
     vertexPathUpToDate: 1
-    vertexPathMaxAngleError: 0.3
-    vertexPathMinVertexSpacing: 0.01
+    vertexPathMaxAngleError: 5
+    vertexPathMinVertexSpacing: 0.1
     showTransformTool: 1
     showPathBounds: 0
     showPerSegmentBounds: 0
@@ -1397,7 +1397,7 @@ Transform:
   m_GameObject: {fileID: 181029262}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.4, y: 0, z: 33.6}
+  m_LocalPosition: {x: -1.4, y: 4, z: 33.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11277,7 +11277,7 @@ Transform:
   m_GameObject: {fileID: 1354591380}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0000002159951, y: 0.838781, z: -0.544469, w: -0.00000033275097}
-  m_LocalPosition: {x: 4.5, y: 33, z: 23.5}
+  m_LocalPosition: {x: -51.1, y: 33, z: 160.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13598,7 +13598,7 @@ Transform:
   m_GameObject: {fileID: 1624019096}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.4, y: 0, z: 11.6}
+  m_LocalPosition: {x: -3.4, y: 4, z: 11.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13619,8 +13619,8 @@ MonoBehaviour:
   editorData:
     _bezierPath:
       points:
-      - {x: 1.564064, y: 0, z: -0.9317932}
-      - {x: 2.564064, y: 0, z: -0.4317932}
+      - {x: 1.564064, y: -1.5502112, z: -0.9317932}
+      - {x: 2.564064, y: -1.5502112, z: -0.4317932}
       - {x: -12.417969, y: 0, z: 9.656288}
       - {x: -11.231422, y: 0, z: 18.766602}
       - {x: -9.772132, y: 0, z: 29.971046}
@@ -13633,7 +13633,7 @@ MonoBehaviour:
       - {x: 33.69465, y: 0, z: 62.386993}
       - {x: 33.287308, y: 0, z: 67.87057}
       isClosed: 0
-      space: 2
+      space: 0
       controlMode: 0
       autoControlLength: 0.3
       boundsUpToDate: 0
@@ -13649,8 +13649,8 @@ MonoBehaviour:
       globalNormalsAngle: 0
       flipNormals: 0
     vertexPathUpToDate: 1
-    vertexPathMaxAngleError: 0.3
-    vertexPathMinVertexSpacing: 0.01
+    vertexPathMaxAngleError: 5
+    vertexPathMinVertexSpacing: 0.1
     showTransformTool: 1
     showPathBounds: 0
     showPerSegmentBounds: 0
@@ -14417,7 +14417,12 @@ PrefabInstance:
     - target: {fileID: 4886188902491931314, guid: f6bddd54589242745b1b9ca67bfcdfdf,
         type: 3}
       propertyPath: logPerSec
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4886188902491931314, guid: f6bddd54589242745b1b9ca67bfcdfdf,
+        type: 3}
+      propertyPath: spawnRate
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4886188902491931314, guid: f6bddd54589242745b1b9ca67bfcdfdf,
         type: 3}
@@ -14643,7 +14648,7 @@ Transform:
   m_GameObject: {fileID: 1740710763}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0000002159951, y: 0.838781, z: -0.544469, w: -0.00000033275097}
-  m_LocalPosition: {x: 4.5, y: 33, z: 23.5}
+  m_LocalPosition: {x: -51.1, y: 33, z: 160.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15549,7 +15554,7 @@ Transform:
   m_GameObject: {fileID: 1971690354}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.9, y: 0, z: 9.8}
+  m_LocalPosition: {x: -4.9, y: 4, z: 9.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15570,8 +15575,8 @@ MonoBehaviour:
   editorData:
     _bezierPath:
       points:
-      - {x: 2, y: 0, z: 0}
-      - {x: -10.287537, y: 0, z: 3.9744034}
+      - {x: 2.0045319, y: -1.4274435, z: -0.0000076293945}
+      - {x: -10.283005, y: -1.4274435, z: 3.9743958}
       - {x: -19.50425, y: 0, z: 10.135666}
       - {x: -18.442253, y: 0, z: 18.335403}
       - {x: -16.778883, y: 0, z: 31.178383}
@@ -15584,7 +15589,7 @@ MonoBehaviour:
       - {x: 38.899727, y: 0, z: 63.513718}
       - {x: 41.608288, y: 0, z: 72.54863}
       isClosed: 0
-      space: 2
+      space: 0
       controlMode: 0
       autoControlLength: 0.3
       boundsUpToDate: 0
@@ -15599,9 +15604,9 @@ MonoBehaviour:
       - 0
       globalNormalsAngle: 0
       flipNormals: 0
-    vertexPathUpToDate: 1
-    vertexPathMaxAngleError: 0.3
-    vertexPathMinVertexSpacing: 0.01
+    vertexPathUpToDate: 0
+    vertexPathMaxAngleError: 5
+    vertexPathMinVertexSpacing: 0.1
     showTransformTool: 1
     showPathBounds: 0
     showPerSegmentBounds: 0
@@ -17657,7 +17662,7 @@ PrefabInstance:
     - target: {fileID: 5395887581777115456, guid: 5c6c63324708a6f4cbab4f9f146d1de4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.5
+      value: -51.1
       objectReference: {fileID: 0}
     - target: {fileID: 5395887581777115456, guid: 5c6c63324708a6f4cbab4f9f146d1de4,
         type: 3}
@@ -17667,7 +17672,7 @@ PrefabInstance:
     - target: {fileID: 5395887581777115456, guid: 5c6c63324708a6f4cbab4f9f146d1de4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.5
+      value: 140.9
       objectReference: {fileID: 0}
     - target: {fileID: 5395887581777115456, guid: 5c6c63324708a6f4cbab4f9f146d1de4,
         type: 3}
@@ -17753,6 +17758,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7587987099949201588, guid: 5c6c63324708a6f4cbab4f9f146d1de4,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 7587987099949201588, guid: 5c6c63324708a6f4cbab4f9f146d1de4,
         type: 3}

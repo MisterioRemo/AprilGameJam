@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 namespace aprilJam
 {
@@ -14,6 +15,8 @@ namespace aprilJam
     [SerializeField] private GameObject swords;
     [SerializeField] private GameObject horns;
     [SerializeField] private GameObject parrot;
+
+    [Inject] protected AudioManager audioCtrl;
     #endregion
 
     #region PROPERTIES
@@ -60,16 +63,36 @@ namespace aprilJam
         frenchmanSkin.SetActive(true);
     }
 
-    public void SetProfessionAttribute()
+    public void SetProfessionAttribute(bool _playEffects = true)
     {
-      if (SailorProfession == Profession.Devil)
-        horns.SetActive(true);
-      else if (SailorProfession == Profession.Witcher)
-        swords.SetActive(true);
-      else if (SailorProfession == Profession.Pirat)
-        parrot.SetActive(true);
+      switch (SailorProfession)
+      {
+        case Profession.Sailor:
+          return;
+        case Profession.Devil:
+          horns.SetActive(true);
+          break;
+        case Profession.Witcher:
+          swords.SetActive(true);
+          break;
+        case Profession.Pirat:
+          parrot.SetActive(true);
+          break;
+        default:
+          break;
+      }
 
+      if (_playEffects)
+        PlayEffects();
+    }
+
+    public void PlayEffects()
+    {
+      if (!poofEffect.gameObject.activeSelf)
+        poofEffect.gameObject.SetActive(true);
       poofEffect.Play();
+
+      audioCtrl.PlaySFX("Poof");
     }
     #endregion
   }

@@ -11277,7 +11277,7 @@ Transform:
   m_GameObject: {fileID: 1354591380}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0000002159951, y: 0.838781, z: -0.544469, w: -0.00000033275097}
-  m_LocalPosition: {x: -51.1, y: 33, z: 160.9}
+  m_LocalPosition: {x: 10.5, y: 33, z: 144.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14648,7 +14648,7 @@ Transform:
   m_GameObject: {fileID: 1740710763}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0000002159951, y: 0.838781, z: -0.544469, w: -0.00000033275097}
-  m_LocalPosition: {x: -51.1, y: 33, z: 160.9}
+  m_LocalPosition: {x: 10.5, y: 33, z: 144.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15604,7 +15604,7 @@ MonoBehaviour:
       - 0
       globalNormalsAngle: 0
       flipNormals: 0
-    vertexPathUpToDate: 0
+    vertexPathUpToDate: 1
     vertexPathMaxAngleError: 5
     vertexPathMinVertexSpacing: 0.1
     showTransformTool: 1
@@ -17659,10 +17659,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sailor2.0
       objectReference: {fileID: 0}
+    - target: {fileID: 4175575877281695170, guid: 5c6c63324708a6f4cbab4f9f146d1de4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5395887581777115456, guid: 5c6c63324708a6f4cbab4f9f146d1de4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -51.1
+      value: 10.5
       objectReference: {fileID: 0}
     - target: {fileID: 5395887581777115456, guid: 5c6c63324708a6f4cbab4f9f146d1de4,
         type: 3}
@@ -17672,7 +17677,7 @@ PrefabInstance:
     - target: {fileID: 5395887581777115456, guid: 5c6c63324708a6f4cbab4f9f146d1de4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 140.9
+      value: 124.4
       objectReference: {fileID: 0}
     - target: {fileID: 5395887581777115456, guid: 5c6c63324708a6f4cbab4f9f146d1de4,
         type: 3}
@@ -17768,6 +17773,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Constraints
       value: 116
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206069017450567324, guid: 5c6c63324708a6f4cbab4f9f146d1de4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -196,6 +196,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 2847ced760c96ea40be679b02bbc258e, type: 3}
   - name: Note
     clip: {fileID: 8300000, guid: 87ee1e74642f66d4ca25e38634fd2666, type: 3}
+  - name: Poof
+    clip: {fileID: 8300000, guid: 918f880cd00c61a4187077c365c7bf03, type: 3}
   songSoundsList:
   - name: Song0
     clip: {fileID: 8300000, guid: 25ba0a0542c7bff418e370125f0607be, type: 3}

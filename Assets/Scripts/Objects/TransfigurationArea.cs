@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 namespace aprilJam
 {
@@ -20,6 +21,7 @@ namespace aprilJam
     {
       var sailorSkin = _collision.transform.root.GetComponentInChildren<SailorSkin>();
       sailorSkin.SetProfessionAttribute();
+      audioCtrl.PlaySFX("Poof");
       StopAllParticleSystem();
     }
 

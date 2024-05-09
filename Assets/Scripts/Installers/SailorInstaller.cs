@@ -15,7 +15,7 @@ namespace aprilJam
         .NonLazy();
 
       Container
-        .Bind<Movement>()
+        .Bind<SailorMovement>()
         .FromNewComponentOn(sailor)
         .AsSingle()
         .NonLazy();

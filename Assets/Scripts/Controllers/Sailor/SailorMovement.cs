@@ -3,32 +3,32 @@ using UnityEngine;
 
 namespace aprilJam
 {
-  public class Movement : MonoBehaviour
+  public class SailorMovement : MonoBehaviour
   {
     #region PARAMETERS
     private Animator        animator;
     private CapsuleCollider bodyCollider;
+    private Rigidbody       rb;
 
     private float movingTime = 0.45f;
     private float speed      = 10f;
 
-    // private float isNotControlTime = 5;
     private bool  isSkiping;
     private bool  canSkip;
     private float skipingTime = 0.5f;
 
     private Coroutine rotCoroutine;
     private bool      isRotating = false;
-    [SerializeField] private float rotSpeed   = 50f;
+
+    [SerializeField] private float rotSpeed = 50f;
     #endregion
-
-
 
     #region LIFECYCLE
     void Start()
     {
       animator     = GetComponentInChildren<Animator>();
       bodyCollider = GetComponentInChildren<CapsuleCollider>();
+      rb           = GetComponent<Rigidbody>();
     }
     #endregion
 
@@ -44,24 +44,22 @@ namespace aprilJam
       if (_other.CompareTag("SkipRock"))
         canSkip = false;
     }
+
+    private void OnCollisionEnter(Collision _collision)
+    {
+      rb.velocity = Vector3.zero;
+    }
     #endregion
 
     #region INTERFACE
-    public void isControls()
+    public void TakeControl()
     {
-      //if (isControl == false)
-      //{
-      //  animator.SetBool("Stop", true);
-      //  StartRotations90();
-      //  StartRotations15();
-      //  isMoving = true;
-      //  animator.SetBool("FrontCrawl", true);
-      //}
+      // Empty
     }
 
     public void Dive()
     {
-      animator.SetTrigger("Drive");
+      animator.SetTrigger("Dive");
     }
 
     public void Skip()
@@ -95,6 +93,7 @@ namespace aprilJam
     public void Move()
     {
       if (isSkiping) return;
+      if (isRotating) StopCoroutine(rotCoroutine);
 
       animator.SetBool("Stop", false);
       animator.SetBool("Breaststroke", true);
@@ -117,7 +116,7 @@ namespace aprilJam
       animator.SetBool("Stop", true);
     }
 
-    public void StartRotations(float _angle)
+    public void Rotate(float _angle)
     {
       if (isSkiping) return;
       if (isRotating) StopCoroutine(rotCoroutine);
@@ -133,7 +132,7 @@ namespace aprilJam
       float      time          = 0f;
       float      coef          = 1f / Mathf.Abs(_angle);
 
-      while (transform.rotation != endRotation)
+      while (time < 1f)
       {
         transform.rotation = Quaternion.Lerp(startRotation, endRotation, time);
         time              += coef * rotSpeed * Time.deltaTime;
@@ -144,28 +143,28 @@ namespace aprilJam
       isRotating = false;
     }
 
-    public void StartRotations90()
+    public void RotateBy90Clockwise()
     {
-      StartRotations(90);
+      Rotate(90f);
     }
 
-    public void StartRotations15()
+    public void RotateBy15Clockwise()
     {
-      StartRotations(15);
+      Rotate(15f);
     }
 
-    public void StartRotationsMinus90()
+    public void RotateBy90Anticlockwise()
     {
-      StartRotations(-90);
+      Rotate(-90f);
     }
 
-    public void StartRotationsMinus15()
+    public void RotateBy15Anticlockwise()
     {
-      StartRotations(-15);
+      Rotate(-15f);
     }
     public void TurnAround()
     {
-      StartRotations(180);
+      Rotate(180f);
     }
     #endregion
   }

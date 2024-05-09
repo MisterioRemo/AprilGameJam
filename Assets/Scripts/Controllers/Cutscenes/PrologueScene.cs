@@ -8,6 +8,7 @@ using UnityEngine.InputSystem.Utilities;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Video;
+using Zenject;
 
 namespace aprilJam
 {
@@ -45,6 +46,8 @@ namespace aprilJam
     private int                          noteIndex;
     private Dictionary<Note, GameObject> noteToPrefab;
     private List<GameObject>             notesInGrid;
+
+    [Inject] private AudioManager audioCtrl;
     #endregion
 
     #region LIFECYCLE
@@ -103,6 +106,7 @@ namespace aprilJam
             note == noteCombination[noteIndex])
         {
           LeanTween.scale(notesInGrid[noteIndex], new Vector3(1.2f, 1.2f, 1.2f), 0.3f).setEase(LeanTweenType.easeOutQuint);
+          audioCtrl.PlaySFX("Note");
           if (++noteIndex == noteCombination.Length)
             ShowTooltip();
         }

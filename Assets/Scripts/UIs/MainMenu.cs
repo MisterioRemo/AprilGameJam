@@ -21,8 +21,11 @@ namespace aprilJam
     #region LIFECYCLE
     private void Awake()
     {
-      cameraMenuRot    = menuCamera.transform.rotation;
-      cameraCreditsRot = new Quaternion(0.0776f, 0.7192f, -0.0814f, 0.6856f);
+      if (menuCamera)
+      {
+        cameraMenuRot    = menuCamera.transform.rotation;
+        cameraCreditsRot = new Quaternion(0.0776f, 0.7192f, -0.0814f, 0.6856f);
+      }
     }
     #endregion
 
@@ -50,10 +53,11 @@ namespace aprilJam
 
     public void ReturnToMainMenu()
     {
-      settingsWindow.SetActive(false);
+      if (settingsWindow != null)
+        settingsWindow.SetActive(false);
       menuWindow.SetActive(true);
 
-      if (creditsWindow.activeSelf)
+      if (creditsWindow != null && creditsWindow.activeSelf)
       {
         isCreditsInFocus = false;
         StartCoroutine(RotateCamera(cameraCreditsRot, cameraMenuRot));

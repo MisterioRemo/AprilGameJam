@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using Zenject;
 
 namespace aprilJam
 {
@@ -7,6 +7,10 @@ namespace aprilJam
   {
     #region PARAMETERS
     private ParticleSystem[] systems;
+    #endregion
+
+    #region EVENTS
+    public static Action OnSailorTransformation;
     #endregion
 
     #region LIFECYCLE
@@ -21,7 +25,7 @@ namespace aprilJam
     {
       var sailorSkin = _collision.transform.root.GetComponentInChildren<SailorSkin>();
       sailorSkin.SetProfessionAttribute();
-      audioCtrl.PlaySFX("Poof");
+      OnSailorTransformation?.Invoke();
       StopAllParticleSystem();
     }
 

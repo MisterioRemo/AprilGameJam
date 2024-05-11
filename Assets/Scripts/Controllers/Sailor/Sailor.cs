@@ -7,7 +7,7 @@ namespace aprilJam
   {
     #region PARAMETERS
     [SerializeField] private ParticleSystem boomEffect;
-    [SerializeField] private int            stamin = 100;
+    [SerializeField] private ParticleSystem hitEffect;
     #endregion
 
     #region PROPERTIES
@@ -36,18 +36,18 @@ namespace aprilJam
 
       CurrentHealth -= _inputDamage;
       OnTakingDamage?.Invoke(CurrentHealth);
-      PlayBoomEffect();
+      PlayEffect(_inputDamage < 15 ? boomEffect : hitEffect);
 
       if (CurrentHealth <= 0)
         OnDeath?.Invoke();
     }
 
-    public void PlayBoomEffect()
+    public void PlayEffect(ParticleSystem _effect)
     {
-      if (!boomEffect.gameObject.activeSelf)
-        boomEffect.gameObject.SetActive(true);
+      if (!_effect.gameObject.activeSelf)
+        _effect.gameObject.SetActive(true);
 
-      boomEffect.Play();
+      _effect.Play();
     }
     #endregion
   }

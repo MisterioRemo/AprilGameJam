@@ -126,7 +126,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c5571c3daf4b345ac7add6eb1077ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <DamageAmount>k__BackingField: 10
+  collisionTags: []
+  sfxSound: 
+  <DamageAmount>k__BackingField: 15
   model: {fileID: 8181182891913211583}
   startPoint: {fileID: 220214765614252919}
   endPoint: {fileID: 648627903606602120}

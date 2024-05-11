@@ -7,6 +7,8 @@ TagManager:
   - Sailor
   - LogDrivingEnd
   - SkipRock
+  - FxTemporaire
+  - Mast
   layers:
   - Default
   - TransparentFX

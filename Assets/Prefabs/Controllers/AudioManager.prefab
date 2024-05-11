@@ -185,7 +185,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: e5e4634da8e2d0e42b9db71e2cd9f179, type: 3}
   sfxSoundsList:
   - name: WaterSplash
-    clip: {fileID: 8300000, guid: b349ff762b7b71a4191e9806d4f0aa66, type: 3}
+    clip: {fileID: 8300000, guid: 8941b00ece9ac9140abb6457d9ae5002, type: 3}
   - name: Button
     clip: {fileID: 8300000, guid: b33c240d33f701344a5cdf338008a861, type: 3}
   - name: ButtonPressed
@@ -203,6 +203,18 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 25ba0a0542c7bff418e370125f0607be, type: 3}
   - name: Song1
     clip: {fileID: 8300000, guid: 86fe1a50e0df8a14d8490b6160f5d010, type: 3}
+  - name: Song2
+    clip: {fileID: 8300000, guid: 8d673f71700c3624cb9ed4c685ff9388, type: 3}
+  - name: Song3
+    clip: {fileID: 8300000, guid: cfd26ca85c1146a478a782cd772f1f1a, type: 3}
+  - name: Song4
+    clip: {fileID: 8300000, guid: 468e8f556f0dd0f47a46ad3a990d957f, type: 3}
+  - name: Song5
+    clip: {fileID: 8300000, guid: 049058f388f5b6e4cbe60f8fe60d3578, type: 3}
+  - name: Song6
+    clip: {fileID: 8300000, guid: d44dee94ae197e9419b5c5fd12f5953a, type: 3}
+  - name: Song7
+    clip: {fileID: 8300000, guid: e2a0adb130c6b104d8d3e954f45cd42d, type: 3}
 --- !u!1 &6488720980973954748
 GameObject:
   m_ObjectHideFlags: 0

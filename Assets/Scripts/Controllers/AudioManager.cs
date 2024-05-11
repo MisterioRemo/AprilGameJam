@@ -13,6 +13,10 @@ namespace aprilJam
       public AudioClip clip;
     }
 
+    #region CONSTANTS
+    private const int MAX_PLAYING_SONG_COUNT = 3;
+    #endregion
+
     #region PARAMETERS
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource sfxSource;
@@ -24,6 +28,10 @@ namespace aprilJam
     private Dictionary<string, AudioClip> musicSounds;
     private Dictionary<string, AudioClip> sfxSounds;
     private Dictionary<string, AudioClip> songSounds;
+
+    private int   playingSongCount   = 0;
+    private float approxSongDuration = 4f;
+    private float songTimer          = 0f;
     #endregion
 
     #region PROPERTIES
@@ -51,6 +59,19 @@ namespace aprilJam
       musicSource.loop = true;
       PlayMusic(PlayAtStartClipName);
     }
+
+    private void Update()
+    {
+      if (playingSongCount == 0)
+        return;
+
+      songTimer += Time.deltaTime;
+      if (songTimer >= approxSongDuration)
+      {
+        playingSongCount = Mathf.Max(0, playingSongCount - 1);
+        songTimer        = 0f;
+      }
+    }
     #endregion
 
     #region INTERFACE
@@ -71,8 +92,14 @@ namespace aprilJam
 
     public void PlaySong(string _name)
     {
+      if (playingSongCount >= MAX_PLAYING_SONG_COUNT)
+        return;
+
       if (songSounds.TryGetValue(_name, out AudioClip clip))
+      {
         songSource.PlayOneShot(clip);
+        playingSongCount++;
+      }
     }
 
     public void ToggleMusic()

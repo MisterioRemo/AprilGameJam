@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using Zenject;
 
 namespace aprilJam
 {
@@ -21,6 +22,8 @@ namespace aprilJam
     private bool      isRotating = false;
 
     [SerializeField] private float rotSpeed = 50f;
+
+    [Inject] private AudioManager audioCtrl;
     #endregion
 
     #region LIFECYCLE
@@ -98,6 +101,7 @@ namespace aprilJam
       animator.SetBool("Stop", false);
       animator.SetBool("Breaststroke", true);
       StartCoroutine(MovementCorutine());
+      audioCtrl.PlaySFX("WaterSplash");
     }
 
     private IEnumerator MovementCorutine()

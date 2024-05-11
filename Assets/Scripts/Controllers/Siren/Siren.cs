@@ -1,3 +1,4 @@
+using ModestTree;
 using UnityEngine;
 using Zenject;
 
@@ -16,10 +17,11 @@ namespace aprilJam
     #region PROPERTIES
     private Animator animator;
 
-    [Inject] private Sailor       sailor;
-    [Inject] private SirenSong    sirenSong;
-    [Inject] private Game         gameCtrl;
-    [Inject] private AudioManager audioCtrl;
+    [Inject] private Sailor          sailor;
+    [Inject] private SirenSong       sirenSong;
+    [Inject] private NoteCombination noteCombination;
+    [Inject] private Game            gameCtrl;
+    [Inject] private AudioManager    audioCtrl;
     #endregion
 
     #region LIFECYCLE
@@ -77,7 +79,11 @@ namespace aprilJam
     private void PlaySong(System.Collections.Generic.List<Note> _notes)
     {
       PlaySongAnimation();
-      audioCtrl.PlaySong("Song" + Random.Range(0, audioCtrl.SongCount));
+      if (noteCombination.Properties.TryGetValue(noteCombination.NotesToKey(_notes), out CombinationProperties _properties) &&
+          !_properties.sfxName.IsEmpty())
+        audioCtrl.PlaySong(_properties.sfxName);
+      else
+        audioCtrl.PlaySong("Song" + Random.Range(0, audioCtrl.SongCount));
     }
     #endregion
   }

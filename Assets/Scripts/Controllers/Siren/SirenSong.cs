@@ -101,10 +101,10 @@ namespace aprilJam
 
     private void ApplyCombination()
     {
-      if (noteCombination.Actions.TryGetValue(noteCombination.NotesToKey(pressedNotes),
-                                              out Action action))
+      if (noteCombination.Properties.TryGetValue(noteCombination.NotesToKey(pressedNotes),
+                                              out CombinationProperties properties))
       {
-        action();
+        properties.action();
         OnSinging?.Invoke(pressedNotes);
       }
 

@@ -28,8 +28,7 @@ namespace aprilJam
           video = sadVideo[GameState.Instance.DeathCount];
           break;
         case EndingType.Lonely:
-          OnVideoEnded(null);
-          // video = lonelyVideo;
+          video = lonelyVideo;
           break;
         default:
           break;

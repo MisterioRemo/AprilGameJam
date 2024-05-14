@@ -628,8 +628,8 @@ VideoPlayer:
   m_EnabledAudioTracks: 
   m_DirectAudioMutes: 
   m_ControlledAudioTrackCount: 0
-  m_PlayOnAwake: 1
-  m_SkipOnDrop: 1
+  m_PlayOnAwake: 0
+  m_SkipOnDrop: 0
   m_Looping: 0
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
@@ -1485,7 +1485,7 @@ MonoBehaviour:
   - {fileID: 32900000, guid: f11dedf6937a7a34780a8e8edfb71a25, type: 3}
   - {fileID: 32900000, guid: 7ab763af65803824596e02a9c3925b36, type: 3}
   - {fileID: 32900000, guid: f2992ee23b9041e419edf9f6854077ce, type: 3}
-  lonelyVideo: {fileID: 0}
+  lonelyVideo: {fileID: 32900000, guid: eb893a19aab15014f8adeaf9636334ae, type: 3}
 --- !u!1 &2078052464
 GameObject:
   m_ObjectHideFlags: 0

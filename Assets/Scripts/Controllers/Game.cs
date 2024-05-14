@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
@@ -7,25 +5,19 @@ using static UnityEngine.InputSystem.InputAction;
 
 namespace aprilJam
 {
-  public class Game: IInitializable, IDisposable
+  public class Game: MonoBehaviour
   {
     #region PARAMETERS
     [Inject] private AprilJamInputActions inputActions;
-    [Inject] private SirenSong            sirenSong;
     [Inject] private Sailor               sailor;
 
-    private GameObject combinationWindow;
-    private GameObject menuWindow;
+    [SerializeField] private GameObject combinationWindow;
+    [SerializeField] private GameObject menuWindow;
+    [SerializeField] private GameObject crossfadeUI;
     #endregion
 
-    public Game(List<GameObject> _uiWindows)
-    {
-      combinationWindow = _uiWindows[0];
-      menuWindow        = _uiWindows[1];
-    }
-
     #region LIFECYCLE
-    public void Initialize()
+    private void Start()
     {
       inputActions.Player.Combination.started += ShowCombinationWindow;
       inputActions.Player.Menu.started        += ShowMenuWindow;
@@ -35,7 +27,7 @@ namespace aprilJam
       ShowCombinationWindow();
     }
 
-    public void Dispose()
+    private void OnDestroy()
     {
       inputActions.Player.Combination.started -= ShowCombinationWindow;
       inputActions.Player.Menu.started        -= ShowMenuWindow;
@@ -80,6 +72,12 @@ namespace aprilJam
     {
       GameState.Instance.DeathCount++;
 
+      crossfadeUI.SetActive(true);
+      Invoke("LoadingSceneOnSailorDeath", 2.3f);
+    }
+
+    private void LoadingSceneOnSailorDeath()
+    {
       if (GameState.Instance.DeathCount == GameState.Instance.MaxLifeCount)
         LoadEndingScene(EndingType.Lonely);
       else

@@ -17,7 +17,7 @@ namespace aprilJam
     #endregion
 
     #region EVENTS
-    public Action OnDeath;
+    public Action      OnDeath;
     public Action<int> OnTakingDamage;
     #endregion
 

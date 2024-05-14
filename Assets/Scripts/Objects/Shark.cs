@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace aprilJam
@@ -8,7 +9,7 @@ namespace aprilJam
     [SerializeField] private Vector2 speedRange;
     [SerializeField] private Vector2 rotationSpeedRange;
     [SerializeField] private float   changeSpeedRate = 1f;
-    [SerializeField] private float   attackDistance  = 13f;
+    [SerializeField] private float   attackDistance  = 10f;
     [SerializeField] private float   attackCooldown  = 10f;
 
     [Header("Habitat zone")]
@@ -49,7 +50,7 @@ namespace aprilJam
       InvokeRepeating("SetRandomSpeed", 0f, changeSpeedRate);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
       if (!isAttackFinished)
         return;
@@ -68,6 +69,21 @@ namespace aprilJam
 
       transform.Translate(Vector3.forward * speed * Time.deltaTime);
       transform.position = habitatZoneCenter + Vector3.ClampMagnitude(transform.position - habitatZoneCenter, habitatZoneRadius);
+    }
+    #endregion
+
+    #region COLLISIONS
+    protected override void ProcessCollision(Collision _collision)
+    {
+      if (canAttack)
+        base.ProcessCollision(_collision);
+    }
+
+    protected override void ProcessTrigerCollision(Collider _collision)
+    {
+      target = _collision.gameObject;
+      if (canAttack)
+        StartChasing();
     }
     #endregion
 
@@ -109,6 +125,9 @@ namespace aprilJam
 
     private void Chase()
     {
+      if (!isAttackFinished)
+        return;
+
       Vector3 targetDirection = target.transform.position - transform.position;
       Vector3 sharkDirection  = Vector3.RotateTowards(transform.forward,
                                                       targetDirection,
@@ -118,17 +137,20 @@ namespace aprilJam
       transform.rotation = Quaternion.LookRotation(sharkDirection);
 
       if (targetDirection.magnitude < attackDistance)
-      {
-        isAttackFinished = false;
-        animator.SetTrigger("Attack");
-        Invoke("StartCooldown", 4.4f);
-      }
+        StartCoroutine(Attack());
     }
 
-    protected override void ProcessTrigerCollision(Collider _collision)
+    private IEnumerator Attack()
     {
-      target = _collision.gameObject;
-      if (canAttack) StartChasing();
+      isAttackFinished = false;
+      animator.SetTrigger("Dive");
+      yield return new WaitForSeconds(3f);
+
+      transform.position = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
+      animator.SetTrigger("Attack");
+      yield return new WaitForSeconds(2.2f);
+
+      StartCooldown();
     }
 
     private void DetectSailor()

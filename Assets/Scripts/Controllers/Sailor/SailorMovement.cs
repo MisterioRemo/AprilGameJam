@@ -14,14 +14,16 @@ namespace aprilJam
     private float movingTime = 0.45f;
     private float speed      = 10f;
 
-    private bool  isSkiping;
-    private bool  canSkip;
-    private float skipingTime = 0.5f;
+    private bool       isSkiping;
+    private bool       canSkip;
+    private float      skipingTime = 0.5f;
+    private GameObject skipRock;
+
+    private bool isDiving;
 
     private Coroutine rotCoroutine;
     private bool      isRotating = false;
-
-    [SerializeField] private float rotSpeed = 50f;
+    private float     rotSpeed   = 50f;
 
     [Inject] private AudioManager audioCtrl;
     #endregion
@@ -39,13 +41,19 @@ namespace aprilJam
     private void OnTriggerEnter(Collider _other)
     {
       if (_other.CompareTag("SkipRock"))
-        canSkip = true;
+      {
+        skipRock = _other.gameObject;
+        canSkip  = true;
+      }
     }
 
     private void OnTriggerExit(Collider _other)
     {
       if (_other.CompareTag("SkipRock"))
-        canSkip = false;
+      {
+        skipRock = null;
+        canSkip  = false;
+      }
     }
 
     private void OnCollisionEnter(Collision _collision)
@@ -62,7 +70,26 @@ namespace aprilJam
 
     public void Dive()
     {
+      StartCoroutine(DiveCorutine());
+    }
+
+    private IEnumerator DiveCorutine()
+    {
+      isDiving = true;
       animator.SetTrigger("Dive");
+      yield return new WaitForSeconds(1.2f);
+
+      float time = 0f;
+      while (time < movingTime * 1.5f)
+      {
+        transform.position += transform.forward * Time.deltaTime * speed;
+        time += Time.deltaTime;
+
+        yield return new WaitForEndOfFrame();
+      }
+
+      animator.SetTrigger("Surface");
+      isDiving = false;
     }
 
     public void Skip()
@@ -77,7 +104,8 @@ namespace aprilJam
 
     private IEnumerator SkipCorutine()
     {
-      float time    = 0f;
+      float time = 0f;
+      transform.LookAt(new Vector3(skipRock.transform.position.x, transform.position.y, skipRock.transform.position.z));
       bodyCollider.enabled = false;
 
       while (time < skipingTime)
@@ -95,7 +123,7 @@ namespace aprilJam
 
     public void Move()
     {
-      if (isSkiping) return;
+      if (isSkiping || isDiving) return;
       if (isRotating) StopCoroutine(rotCoroutine);
 
       animator.SetBool("Stop", false);
@@ -122,7 +150,7 @@ namespace aprilJam
 
     public void Rotate(float _angle)
     {
-      if (isSkiping) return;
+      if (isSkiping || isDiving) return;
       if (isRotating) StopCoroutine(rotCoroutine);
 
       isRotating = true;

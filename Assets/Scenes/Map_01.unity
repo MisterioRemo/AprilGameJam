@@ -2425,7 +2425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionTags: []
   sfxSound: HitRock
-  <DamageAmount>k__BackingField: 1
+  <DamageAmount>k__BackingField: 15
 --- !u!65 &298022204
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5104,7 +5104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionTags: []
   sfxSound: HitRock
-  <DamageAmount>k__BackingField: 1
+  <DamageAmount>k__BackingField: 15
 --- !u!65 &706330813
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6335,7 +6335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionTags: []
   sfxSound: HitRock
-  <DamageAmount>k__BackingField: 1
+  <DamageAmount>k__BackingField: 15
 --- !u!65 &927768297
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6355,8 +6355,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 9.795125, y: 3.2260554, z: 2.224417}
-  m_Center: {x: 3.6380746, y: -0.5903176, z: -0.07300713}
+  m_Size: {x: 9.432043, y: 3.2260554, z: 2.224417}
+  m_Center: {x: 3.4565334, y: -0.5903176, z: -0.07300708}
 --- !u!1 &929438302
 GameObject:
   m_ObjectHideFlags: 0
@@ -6404,7 +6404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionTags: []
   sfxSound: HitRock
-  <DamageAmount>k__BackingField: 1
+  <DamageAmount>k__BackingField: 15
 --- !u!65 &929438305
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6424,8 +6424,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 13.570023, y: 2.359044, z: 2.224417}
-  m_Center: {x: 3.3538418, y: -0.15681273, z: -0.07300054}
+  m_Size: {x: 13.047328, y: 2.359044, z: 2.224417}
+  m_Center: {x: 3.0924945, y: -0.15681267, z: -0.07300056}
 --- !u!1 &961230258 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3547079690673463941, guid: e40363800db87ba4991628a1bffe776f,
@@ -7238,7 +7238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionTags: []
   sfxSound: HitRock
-  <DamageAmount>k__BackingField: 1
+  <DamageAmount>k__BackingField: 15
 --- !u!65 &1102096796
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12941,7 +12941,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionTags: []
   sfxSound: HitRock
-  <DamageAmount>k__BackingField: 1
+  <DamageAmount>k__BackingField: 15
 --- !u!65 &1434948854
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12961,8 +12961,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6.7919316, y: 3.2260554, z: 2.224417}
-  m_Center: {x: 3.3501585, y: -0.5903176, z: -0.07300676}
+  m_Size: {x: 6.0520916, y: 3.2260554, z: 2.224417}
+  m_Center: {x: 2.9802284, y: -0.5903176, z: -0.073010385}
 --- !u!1 &1453832053 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6185220854674642674, guid: 9612cbe1dbef2934c800dc252d3c9635,
@@ -15501,7 +15501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionTags: []
   sfxSound: HitRock
-  <DamageAmount>k__BackingField: 1
+  <DamageAmount>k__BackingField: 15
 --- !u!65 &1686424860
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15962,7 +15962,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionTags: []
   sfxSound: HitRock
-  <DamageAmount>k__BackingField: 1
+  <DamageAmount>k__BackingField: 15
 --- !u!65 &1708235783
 BoxCollider:
   m_ObjectHideFlags: 0

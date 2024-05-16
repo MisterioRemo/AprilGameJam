@@ -31,7 +31,7 @@ namespace aprilJam
     #region METHODS
     public void Hit(int _inputDamage)
     {
-      if (_inputDamage == 0)
+      if (_inputDamage == 0 || CurrentHealth <= 0)
         return;
 
       CurrentHealth -= _inputDamage;

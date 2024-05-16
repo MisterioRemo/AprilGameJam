@@ -31,5 +31,13 @@ namespace aprilJam
     public bool        CanBeAnyProfession => (DeathCount == MaxLifeCount - 1 && !wereGoodSailorOnce) ? false : true;
     public Nationality SailorNationality  => SailorNationalityOrder[DeathCount];
     #endregion
+
+    #region INTERFACE
+    public void Reset()
+    {
+      DeathCount         = 0;
+      wereGoodSailorOnce = false;
+    }
+    #endregion
   }
 }

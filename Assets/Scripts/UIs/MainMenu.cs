@@ -32,6 +32,7 @@ namespace aprilJam
     #region INTERFACE
     public void StartGame()
     {
+      GameState.Instance.Reset();
       SceneManager.LoadScene("PrologueCutscene");
     }
 

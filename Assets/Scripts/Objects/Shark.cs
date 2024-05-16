@@ -24,8 +24,11 @@ namespace aprilJam
 
     private bool       isChasing;
     private GameObject target;
+    private Vector3    lastTargetPosition;
     private bool       isAttackFinished = true;
     private bool       canAttack        = true;
+    private float      maxChaseTime     = 10f;
+    private float      chaseTime        = 0f;
 
     private SphereCollider detectCollider;
     private Animator       animator;
@@ -103,6 +106,7 @@ namespace aprilJam
       isChasing        = false;
       isAttackFinished = true;
       target           = null;
+      chaseTime        = 0f;
       Invoke("StopCooldown", attackCooldown);
     }
 
@@ -125,9 +129,6 @@ namespace aprilJam
 
     private void Chase()
     {
-      if (!isAttackFinished)
-        return;
-
       Vector3 targetDirection = target.transform.position - transform.position;
       Vector3 sharkDirection  = Vector3.RotateTowards(transform.forward,
                                                       targetDirection,
@@ -135,9 +136,15 @@ namespace aprilJam
                                                       0.0f);
       // Debug.DrawRay(transform.position, sharkDirection, Color.red);
       transform.rotation = Quaternion.LookRotation(sharkDirection);
+      chaseTime         += Time.deltaTime;
 
       if (targetDirection.magnitude < attackDistance)
+      {
+        lastTargetPosition = target.transform.position;
         StartCoroutine(Attack());
+      }
+      if (chaseTime > maxChaseTime)
+        StartCooldown();
     }
 
     private IEnumerator Attack()
@@ -146,9 +153,9 @@ namespace aprilJam
       animator.SetTrigger("Dive");
       yield return new WaitForSeconds(3f);
 
-      transform.position = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
+      transform.position = new Vector3(lastTargetPosition.x, transform.position.y, lastTargetPosition.z);
       animator.SetTrigger("Attack");
-      yield return new WaitForSeconds(2.2f);
+      yield return new WaitForSeconds(2.0f);
 
       StartCooldown();
     }

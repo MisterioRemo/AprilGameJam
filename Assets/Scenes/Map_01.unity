@@ -1483,8 +1483,8 @@ MonoBehaviour:
       - {x: 33.590744, y: 0, z: 22.427631}
       - {x: 37.95743, y: 0, z: 23.645775}
       - {x: 43.616905, y: 0, z: 25.224556}
-      - {x: 52.67991, y: 0, z: 30.74746}
-      - {x: 54.57542, y: 0, z: 45.350807}
+      - {x: 52.67991, y: -1.3, z: 30.74746}
+      - {x: 54.57542, y: -1.3, z: 45.350807}
       isClosed: 0
       space: 0
       controlMode: 0
@@ -1508,7 +1508,7 @@ MonoBehaviour:
     showPerSegmentBounds: 0
     displayAnchorPoints: 1
     displayControlPoints: 1
-    bezierHandleScale: 1
+    bezierHandleScale: 0.32
     globalDisplaySettingsFoldout: 0
     keepConstantHandleSize: 1
     showNormalsInVertexMode: 0
@@ -2659,6 +2659,103 @@ MonoBehaviour:
   collisionTags: []
   sfxSound: HitRock
   <DamageAmount>k__BackingField: 1
+--- !u!1 &338270146
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 338270147}
+  - component: {fileID: 338270148}
+  m_Layer: 0
+  m_Name: Path
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &338270147
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338270146}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.9, y: 4, z: 9.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1158893206}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &338270148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338270146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e5ac92bc18f545cc84cd886ece82b4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  editorData:
+    _bezierPath:
+      points:
+      - {x: -15.362457, y: -1.4274435, z: -10.311661}
+      - {x: -28.283165, y: -1.4364061, z: -5.7040863}
+      - {x: -30.430214, y: 0, z: 9.78775}
+      - {x: -29.368217, y: 0, z: 17.987488}
+      - {x: -27.704847, y: 0, z: 30.830467}
+      - {x: -8.096026, y: 0, z: 39.166428}
+      - {x: -1.1711884, y: 0, z: 43.11534}
+      - {x: 10.363005, y: 0, z: 49.692757}
+      - {x: 11.367214, y: 0, z: 54.679028}
+      - {x: 16.74889, y: 0, z: 58.60176}
+      - {x: 22.872604, y: 0, z: 63.06537}
+      - {x: 30.924644, y: -1.3660936, z: 62.42079}
+      - {x: 33.633205, y: -1.3660936, z: 71.4557}
+      isClosed: 0
+      space: 0
+      controlMode: 0
+      autoControlLength: 0.3
+      boundsUpToDate: 0
+      bounds:
+        m_Center: {x: 0, y: 0, z: 0}
+        m_Extent: {x: 2, y: 0.14433756, z: 0}
+      perAnchorNormalsAngle:
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      globalNormalsAngle: 0
+      flipNormals: 0
+    vertexPathUpToDate: 1
+    vertexPathMaxAngleError: 5
+    vertexPathMinVertexSpacing: 0.1
+    showTransformTool: 1
+    showPathBounds: 0
+    showPerSegmentBounds: 0
+    displayAnchorPoints: 1
+    displayControlPoints: 1
+    bezierHandleScale: 0.31
+    globalDisplaySettingsFoldout: 0
+    keepConstantHandleSize: 1
+    showNormalsInVertexMode: 0
+    showBezierPathInVertexMode: 0
+    showDisplayOptions: 1
+    showPathOptions: 1
+    showVertexPathDisplayOptions: 0
+    showVertexPathOptions: 1
+    showNormals: 0
+    showNormalsHelpInfo: 0
+    tabIndex: 0
+  initialized: 1
 --- !u!1 &360444745 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 998370791900207588, guid: 9612cbe1dbef2934c800dc252d3c9635,
@@ -15033,8 +15130,8 @@ MonoBehaviour:
       - {x: 22.019672, y: 0, z: 42.91971}
       - {x: 27.283154, y: 0, z: 46.844215}
       - {x: 34.189407, y: 0, z: 51.99359}
-      - {x: 33.69465, y: 0, z: 62.386993}
-      - {x: 33.287308, y: 0, z: 67.87057}
+      - {x: 33.69465, y: -1.5, z: 62.386993}
+      - {x: 33.287308, y: -1.5, z: 67.87057}
       isClosed: 0
       space: 0
       controlMode: 0
@@ -15059,7 +15156,7 @@ MonoBehaviour:
     showPerSegmentBounds: 0
     displayAnchorPoints: 1
     displayControlPoints: 1
-    bezierHandleScale: 1
+    bezierHandleScale: 0.18
     globalDisplaySettingsFoldout: 0
     keepConstantHandleSize: 1
     showNormalsInVertexMode: 0
@@ -16068,7 +16165,7 @@ PrefabInstance:
     - target: {fileID: 4886188902491931314, guid: f6bddd54589242745b1b9ca67bfcdfdf,
         type: 3}
       propertyPath: pathCreators.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4886188902491931314, guid: f6bddd54589242745b1b9ca67bfcdfdf,
         type: 3}
@@ -16085,35 +16182,40 @@ PrefabInstance:
       propertyPath: pathCreators.Array.data[2]
       value: 
       objectReference: {fileID: 181029263}
+    - target: {fileID: 4886188902491931314, guid: f6bddd54589242745b1b9ca67bfcdfdf,
+        type: 3}
+      propertyPath: pathCreators.Array.data[3]
+      value: 
+      objectReference: {fileID: 338270148}
     - target: {fileID: 7582078539380475701, guid: f6bddd54589242745b1b9ca67bfcdfdf,
         type: 3}
       propertyPath: m_Size.x
-      value: 44.6
+      value: 67.73751
       objectReference: {fileID: 0}
     - target: {fileID: 7582078539380475701, guid: f6bddd54589242745b1b9ca67bfcdfdf,
         type: 3}
       propertyPath: m_Size.y
-      value: 6.54
+      value: 8.679441
       objectReference: {fileID: 0}
     - target: {fileID: 7582078539380475701, guid: f6bddd54589242745b1b9ca67bfcdfdf,
         type: 3}
       propertyPath: m_Size.z
-      value: 5.96
+      value: 12.390162
       objectReference: {fileID: 0}
     - target: {fileID: 7582078539380475701, guid: f6bddd54589242745b1b9ca67bfcdfdf,
         type: 3}
       propertyPath: m_Center.x
-      value: 1.07
+      value: -0.8371315
       objectReference: {fileID: 0}
     - target: {fileID: 7582078539380475701, guid: f6bddd54589242745b1b9ca67bfcdfdf,
         type: 3}
       propertyPath: m_Center.y
-      value: -1.77
+      value: -2.8397202
       objectReference: {fileID: 0}
     - target: {fileID: 7582078539380475701, guid: f6bddd54589242745b1b9ca67bfcdfdf,
         type: 3}
       propertyPath: m_Center.z
-      value: 0.35
+      value: 3.5650811
       objectReference: {fileID: 0}
     - target: {fileID: 8095698775616811186, guid: f6bddd54589242745b1b9ca67bfcdfdf,
         type: 3}
@@ -16180,6 +16282,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 181029264}
+    - targetCorrespondingSourceObject: {fileID: 5436041887151653317, guid: f6bddd54589242745b1b9ca67bfcdfdf,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 338270147}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6bddd54589242745b1b9ca67bfcdfdf, type: 3}
 --- !u!1 &1737799518
@@ -17310,8 +17416,8 @@ MonoBehaviour:
       - {x: 19.661327, y: 0, z: 51.59921}
       - {x: 25.043003, y: 0, z: 55.521942}
       - {x: 31.166718, y: 0, z: 59.98555}
-      - {x: 38.899727, y: 0, z: 63.513718}
-      - {x: 41.608288, y: 0, z: 72.54863}
+      - {x: 38.899727, y: -1.370008, z: 63.513718}
+      - {x: 41.608288, y: -1.370008, z: 72.54863}
       isClosed: 0
       space: 0
       controlMode: 0
@@ -17336,7 +17442,7 @@ MonoBehaviour:
     showPerSegmentBounds: 0
     displayAnchorPoints: 1
     displayControlPoints: 1
-    bezierHandleScale: 1
+    bezierHandleScale: 0.31
     globalDisplaySettingsFoldout: 0
     keepConstantHandleSize: 1
     showNormalsInVertexMode: 0

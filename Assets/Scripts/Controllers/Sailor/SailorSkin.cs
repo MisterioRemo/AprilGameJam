@@ -22,6 +22,8 @@ namespace aprilJam
     #region PROPERTIES
     [field:SerializeField] public Nationality SailorNationality { get; private set; }
     [field:SerializeField] public Profession  SailorProfession  { get; private set; }
+
+    public bool IsProfessionVisible { get; private set; }
     #endregion
 
 #if UNITY_EDITOR
@@ -34,6 +36,8 @@ namespace aprilJam
     #region LIFECYCLE
     private void Awake()
     {
+      IsProfessionVisible = false;
+
       ChangeSkin(GameState.Instance.SailorNationality);
       ChooseProfession();
     }
@@ -65,6 +69,8 @@ namespace aprilJam
 
     public void SetProfessionAttribute(bool _playEffects = true)
     {
+      IsProfessionVisible = true;
+
       switch (SailorProfession)
       {
         case Profession.Sailor:

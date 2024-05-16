@@ -24,8 +24,13 @@ namespace aprilJam
     protected override void ProcessTrigerCollision(Collider _collision)
     {
       var sailorSkin = _collision.transform.root.GetComponentInChildren<SailorSkin>();
-      sailorSkin.SetProfessionAttribute();
-      OnSailorTransformation?.Invoke();
+
+      if (!sailorSkin.IsProfessionVisible)
+      {
+        sailorSkin.SetProfessionAttribute();
+        OnSailorTransformation?.Invoke();
+      }
+
       StopAllParticleSystem();
     }
 

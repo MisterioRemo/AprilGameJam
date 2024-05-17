@@ -24,7 +24,6 @@ namespace aprilJam
 
     private bool       isChasing;
     private GameObject target;
-    private Vector3    lastTargetPosition;
     private bool       isAttackFinished = true;
     private bool       canAttack        = true;
     private float      maxChaseTime     = 10f;
@@ -139,10 +138,7 @@ namespace aprilJam
       chaseTime         += Time.deltaTime;
 
       if (targetDirection.magnitude < attackDistance)
-      {
-        lastTargetPosition = target.transform.position;
         StartCoroutine(Attack());
-      }
       if (chaseTime > maxChaseTime)
         StartCooldown();
     }
@@ -153,7 +149,7 @@ namespace aprilJam
       animator.SetTrigger("Dive");
       yield return new WaitForSeconds(3f);
 
-      transform.position = new Vector3(lastTargetPosition.x, transform.position.y, lastTargetPosition.z);
+      transform.position = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
       animator.SetTrigger("Attack");
       yield return new WaitForSeconds(2.0f);
 
